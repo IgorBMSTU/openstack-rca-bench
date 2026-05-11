@@ -1,0 +1,68 @@
+{
+  "incident_id": "INC-2026-050",
+  "scenario": "ovn-north-db-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "ovn-north-db",
+    "actual_container": "ovn_cluster_north_db_server",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T15:59:19.033185",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_ovn_cluster_north_db_server.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "ovn-north-db",
+    "actual_container": "ovn_cluster_north_db_server",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T16:00:24.305377",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-050/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T15:57:19.033142+00:00",
+      "end": "2026-04-22T16:02:24.305339+00:00"
+    },
+    "count": 2246
+  },
+  "validation": {
+    "signatures_expected": [
+      "ovn",
+      "north",
+      "db",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "ovn",
+      "north",
+      "db",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2246,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 149731
+  },
+  "created_at": "2026-04-22T16:02:35.972062+00:00",
+  "status": "completed"
+}

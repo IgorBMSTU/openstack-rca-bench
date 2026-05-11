@@ -1,0 +1,7 @@
+{
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "prompt_strategy": "zero_shot",
+  "limit": 64,
+  "total": 64
+}

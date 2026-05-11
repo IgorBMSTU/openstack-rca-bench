@@ -1,0 +1,14 @@
+{
+  "provider": "qwen",
+  "model": "qwen3-coder-30b-a3b",
+  "prompt_strategy": "multi_agent",
+  "log_strategy": "hybrid",
+  "max_log_chars": 60000,
+  "limit": 64,
+  "resume": false,
+  "experiment_name": "qwen_multi_agent_fixed",
+  "offset": 0,
+  "incidents_dir": "../rca-framework/incidents",
+  "dry_run": false,
+  "timestamp": "2026-05-08T16:53:41.528934+00:00"
+}

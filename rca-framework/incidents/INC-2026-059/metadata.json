@@ -1,0 +1,70 @@
+{
+  "incident_id": "INC-2026-059",
+  "scenario": "nova-compute-stop",
+  "target_host": "10.197.76.24",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "nova-compute",
+    "actual_container": "nova_compute",
+    "target": "10.197.76.24",
+    "injection_time": "2026-04-23T04:37:44.075755",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_nova_compute.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "nova-compute",
+    "actual_container": "nova_compute",
+    "target": "10.197.76.24",
+    "recovery_time": "2026-04-23T04:38:51.409136",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "/home/biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-059/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-23T04:35:44.073527+00:00",
+      "end": "2026-04-23T04:40:51.409096+00:00"
+    },
+    "count": 2340
+  },
+  "validation": {
+    "signatures_expected": [
+      "nova-compute",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "nova-compute",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2340,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 988344
+  },
+  "created_at": "2026-04-23T04:41:52.969070+00:00",
+  "status": "completed",
+  "workload": {
+    "type": "vm_creation",
+    "vm_prefix": "rca-phase4-vm",
+    "vm_interval_seconds": 15,
+    "vms_created": 4
+  }
+}

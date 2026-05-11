@@ -1,0 +1,62 @@
+{
+  "incident_id": "INC-2026-012",
+  "scenario": "cinder-api-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "cinder-api",
+    "actual_container": "cinder_api",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T05:27:12.785265",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_cinder_api.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "cinder-api",
+    "actual_container": "cinder_api",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T05:28:19.456305",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-012/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T05:25:12.785147+00:00",
+      "end": "2026-04-22T05:30:19.455880+00:00"
+    },
+    "count": 2072
+  },
+  "validation": {
+    "signatures_expected": [
+      "cinder",
+      "ERROR",
+      "unavailable"
+    ],
+    "signatures_found": [
+      "cinder"
+    ],
+    "match_rate": 0.3333333333333333,
+    "log_count": 2072,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 938038
+  },
+  "created_at": "2026-04-22T05:30:32.848140+00:00",
+  "status": "completed"
+}

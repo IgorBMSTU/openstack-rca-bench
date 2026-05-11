@@ -1,0 +1,62 @@
+{
+  "incident_id": "INC-2026-032",
+  "scenario": "mysql-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 120,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "mysql",
+    "actual_container": "galera-bundle-podman-0",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T11:46:06.411821",
+    "status": "success",
+    "command": "sudo pcs resource disable galera-bundle",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "mysql",
+    "actual_container": "galera-bundle-podman-0",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T11:48:23.429258",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-032/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T11:44:06.411706+00:00",
+      "end": "2026-04-22T11:50:23.429221+00:00"
+    },
+    "count": 2916
+  },
+  "validation": {
+    "signatures_expected": [
+      "mysql",
+      "ERROR",
+      "Can't connect"
+    ],
+    "signatures_found": [
+      "mysql"
+    ],
+    "match_rate": 0.3333333333333333,
+    "log_count": 2916,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 248194
+  },
+  "created_at": "2026-04-22T11:50:40.711572+00:00",
+  "status": "completed"
+}

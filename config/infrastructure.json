@@ -1,0 +1,119 @@
+{
+  "infrastructure": {
+    "description": "Stand16 OpenStack Wallaby TripleO AIO with Ceph",
+    "user": "stack",
+    "ssh_key": "/home/stack/.ssh/standkey",
+    "nodes": {
+      "control": {
+        "hostname": "eng-101-aio-ceph-16-control1.ctlplane",
+        "ip": "172.17.75.21",
+        "role": "controller",
+        "ssh_user": "tripleo-admin"
+      },
+      "storage-node-01": {
+        "hostname": "eng-101-aio-ceph-16-storage1.ctlplane",
+        "ip": "172.17.76.41",
+        "role": "storage",
+        "ssh_user": "tripleo-admin"
+      },
+      "storage-node-02": {
+        "hostname": "eng-101-aio-ceph-16-storage2.ctlplane",
+        "ip": "172.17.76.42",
+        "role": "storage",
+        "ssh_user": "tripleo-admin"
+      },
+      "storage-node-03": {
+        "hostname": "eng-101-aio-ceph-16-storage3.ctlplane",
+        "ip": "172.17.76.43",
+        "role": "storage",
+        "ssh_user": "tripleo-admin"
+      },
+      "compute-node-01": {
+        "hostname": "eng-101-aio-ceph-16-control1.ctlplane",
+        "ip": "172.17.75.21",
+        "role": "compute",
+        "ssh_user": "tripleo-admin"
+      },
+      "undercloud": {
+        "hostname": "eng-101-aio-ceph-16-undercloud.ctlplane",
+        "ip": "10.197.75.10",
+        "role": "undercloud",
+        "ssh_user": "stack"
+      }
+    },
+    "dcim_topology": {
+      "controller-rack-01": {
+        "nodes": ["control"],
+        "switch": "switch-core-01",
+        "power_pdu": "pdu-controller-01"
+      },
+      "storage-rack-01": {
+        "nodes": ["storage-node-01"],
+        "switch": "switch-storage-01",
+        "power_pdu": "pdu-storage-01"
+      },
+      "storage-rack-02": {
+        "nodes": ["storage-node-02"],
+        "switch": "switch-storage-02",
+        "power_pdu": "pdu-storage-02"
+      },
+      "storage-rack-03": {
+        "nodes": ["storage-node-03"],
+        "switch": "switch-storage-03",
+        "power_pdu": "pdu-storage-03"
+      },
+      "compute-rack-01": {
+        "nodes": ["compute-node-01"],
+        "switch": "switch-compute-01",
+        "power_pdu": "pdu-compute-01"
+      }
+    },
+    "ceph": {
+      "cluster_name": "ceph",
+      "osd_mapping": {
+        "storage-node-01": ["osd.0", "osd.1", "osd.2"],
+        "storage-node-02": ["osd.3", "osd.4", "osd.5"],
+        "storage-node-03": ["osd.6", "osd.7", "osd.8"]
+      }
+    },
+    "openstack_services": {
+      "control": {
+        "neutron-api": "neutron_api",
+        "neutron-l3-agent": "neutron_l3_agent",
+        "neutron-ovs-agent": "neutron_ovs_agent",
+        "mysql": "mariadb",
+        "rabbitmq": "rabbitmq",
+        "redis": "redis",
+        "glance-api": "glance_api",
+        "keystone": "keystone",
+        "nova-api": "nova_api",
+        "cinder-api": "cinder_api",
+        "heat-api": "heat_api",
+        "ironic-api": "ironic_api",
+        "ironic-conductor": "ironic_conductor",
+        "nova-conductor": "nova_conductor",
+        "nova-scheduler": "nova_scheduler",
+        "nova-metadata": "nova_metadata"
+      }
+    },
+    "container_runtime": "podman",
+    "openstack_version": "Wallaby",
+    "deployment_method": "TripleO"
+  },
+  "incident_config": {
+    "base_dir": "/home/stack/openstack-rca-dataset",
+    "incidents_dir": "/home/stack/openstack-rca-dataset/incidents",
+    "checkpoints_dir": "/home/stack/openstack-rca-dataset/safety_checkpoints",
+    "logs_dir": "/home/stack/openstack-rca-dataset/logs",
+    "default_duration": 60,
+    "default_timeout": 120,
+    "max_incidents_per_batch": 5
+  },
+  "safety": {
+    "pre_injection_checks": ["connectivity", "disk_space", "no_stuck_processes"],
+    "automatic_rollback": true,
+    "max_rollback_attempts": 3,
+    "monitor_interval": 10,
+    "critical_services": ["mysql", "rabbitmq", "redis", "keystone"]
+  }
+}

@@ -1,0 +1,55 @@
+[MASTER] Starting batch of 7 incidents at 2026-04-24T14:40:32+03:00
+[MASTER] ---------------------------------------------------
+[MASTER] Starting nova-api-port-block on 10.197.76.21 for 120s at 2026-04-24T14:40:32+03:00
+[LAUNCH] Starting nova-api-port-block on 10.197.76.21 for 120s at 2026-04-24T14:40:32+03:00
+[LAUNCH] Log file: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_nova-api-port-block_20260424_144032.log
+[LAUNCH] Finished nova-api-port-block at 2026-04-24T14:51:36+03:00 with exit code 0
+[LAUNCH] Log: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_nova-api-port-block_20260424_144032.log
+[MASTER] nova-api-port-block completed successfully
+[MASTER] Brief pause before next incident...
+[MASTER] ---------------------------------------------------
+[MASTER] Starting neutron-api-port-block on 10.197.76.21 for 120s at 2026-04-24T14:51:46+03:00
+[LAUNCH] Starting neutron-api-port-block on 10.197.76.21 for 120s at 2026-04-24T14:51:46+03:00
+[LAUNCH] Log file: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_neutron-api-port-block_20260424_145146.log
+[LAUNCH] Finished neutron-api-port-block at 2026-04-24T15:02:54+03:00 with exit code 0
+[LAUNCH] Log: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_neutron-api-port-block_20260424_145146.log
+[MASTER] neutron-api-port-block completed successfully
+[MASTER] Brief pause before next incident...
+[MASTER] ---------------------------------------------------
+[MASTER] Starting glance-api-port-block on 10.197.76.21 for 120s at 2026-04-24T15:03:04+03:00
+[LAUNCH] Starting glance-api-port-block on 10.197.76.21 for 120s at 2026-04-24T15:03:04+03:00
+[LAUNCH] Log file: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_glance-api-port-block_20260424_150304.log
+[LAUNCH] Finished glance-api-port-block at 2026-04-24T15:14:07+03:00 with exit code 0
+[LAUNCH] Log: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_glance-api-port-block_20260424_150304.log
+[MASTER] glance-api-port-block completed successfully
+[MASTER] Brief pause before next incident...
+[MASTER] ---------------------------------------------------
+[MASTER] Starting mysql-crash on 10.197.76.21 for 120s at 2026-04-24T15:14:17+03:00
+[LAUNCH] Starting mysql-crash on 10.197.76.21 for 120s at 2026-04-24T15:14:17+03:00
+[LAUNCH] Log file: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_mysql-crash_20260424_151417.log
+[LAUNCH] Finished mysql-crash at 2026-04-24T15:25:27+03:00 with exit code 0
+[LAUNCH] Log: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_mysql-crash_20260424_151417.log
+[MASTER] mysql-crash completed successfully
+[MASTER] Brief pause before next incident...
+[MASTER] ---------------------------------------------------
+[MASTER] Starting rabbitmq-crash on 10.197.76.21 for 120s at 2026-04-24T15:25:37+03:00
+[LAUNCH] Starting rabbitmq-crash on 10.197.76.21 for 120s at 2026-04-24T15:25:37+03:00
+[LAUNCH] Log file: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_rabbitmq-crash_20260424_152537.log
+[LAUNCH] Finished rabbitmq-crash at 2026-04-24T15:36:45+03:00 with exit code 0
+[LAUNCH] Log: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_rabbitmq-crash_20260424_152537.log
+[MASTER] rabbitmq-crash completed successfully
+[MASTER] Brief pause before next incident...
+[MASTER] ---------------------------------------------------
+[MASTER] Starting keystone-config on 10.197.76.21 for 120s at 2026-04-24T15:36:55+03:00
+[LAUNCH] Starting keystone-config on 10.197.76.21 for 120s at 2026-04-24T15:36:55+03:00
+[LAUNCH] Log file: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_keystone-config_20260424_153655.log
+[MASTER] WARNING: keystone-config exited with code 1
+[MASTER] Brief pause before next incident...
+[MASTER] ---------------------------------------------------
+[MASTER] Starting nova-api-config on 10.197.76.21 for 120s at 2026-04-24T15:38:46+03:00
+[LAUNCH] Starting nova-api-config on 10.197.76.21 for 120s at 2026-04-24T15:38:46+03:00
+[LAUNCH] Log file: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/launch_nova-api-config_20260424_153846.log
+[MASTER] WARNING: nova-api-config exited with code 1
+[MASTER] Brief pause before next incident...
+[MASTER] Batch complete at 2026-04-24T15:40:37+03:00
+[MASTER] Log: /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/batch_1_master_20260424_144032.log

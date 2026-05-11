@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-029",
+  "scenario": "ceph-mon-stop",
+  "target_host": "10.197.76.41",
+  "duration_seconds": 120,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "ceph-mon",
+    "actual_container": "ceph-mon",
+    "target": "10.197.76.41",
+    "injection_time": "2026-04-22T10:55:31.320316",
+    "status": "success",
+    "command": "sudo ceph orch daemon stop mon.eng-101-astd-ceph-16-storage1",
+    "verification": "stopped",
+    "stdout": "Scheduled to stop mon.eng-101-astd-ceph-16-storage1 on host 'eng-101-astd-ceph-16-storage1.novalocal'\n",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "ceph-mon",
+    "actual_container": "ceph-mon",
+    "target": "10.197.76.41",
+    "recovery_time": "2026-04-22T10:57:59.893059",
+    "status": "success",
+    "verification": "running",
+    "stdout": "Scheduled to start mon.eng-101-astd-ceph-16-storage1 on host 'eng-101-astd-ceph-16-storage1.novalocal'\n",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-029/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T10:53:31.320242+00:00",
+      "end": "2026-04-22T10:59:59.893019+00:00"
+    },
+    "count": 2541
+  },
+  "validation": {
+    "signatures_expected": [
+      "ceph",
+      "mon",
+      "ERROR",
+      "down"
+    ],
+    "signatures_found": [
+      "ceph",
+      "mon",
+      "ERROR",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2541,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 845912
+  },
+  "created_at": "2026-04-22T11:00:26.806803+00:00",
+  "status": "completed"
+}

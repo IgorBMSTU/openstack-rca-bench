@@ -1,0 +1,65 @@
+{
+  "incident_id": "INC-2026-007",
+  "scenario": "neutron-api-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "neutron-api",
+    "actual_container": "neutron_api",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-21T12:14:35.857465",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_neutron_api.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "neutron-api",
+    "actual_container": "neutron_api",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-21T12:16:23.269519",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-007/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-21T12:12:35.857352+00:00",
+      "end": "2026-04-21T12:18:23.269319+00:00"
+    },
+    "count": 2349
+  },
+  "validation": {
+    "signatures_expected": [
+      "neutron",
+      "stop",
+      "ERROR",
+      "503"
+    ],
+    "signatures_found": [
+      "neutron",
+      "stop",
+      "503"
+    ],
+    "match_rate": 0.75,
+    "log_count": 2349,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 326982
+  },
+  "created_at": "2026-04-21T12:18:38.687356+00:00",
+  "status": "completed"
+}

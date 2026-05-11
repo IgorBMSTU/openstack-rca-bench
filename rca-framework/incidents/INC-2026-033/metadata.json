@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-033",
+  "scenario": "heat-engine-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "heat-engine",
+    "actual_container": "heat_engine",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T12:04:02.666294",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_heat_engine.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "heat-engine",
+    "actual_container": "heat_engine",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T12:05:15.613121",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-033/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T12:02:02.666250+00:00",
+      "end": "2026-04-22T12:07:15.613084+00:00"
+    },
+    "count": 2454
+  },
+  "validation": {
+    "signatures_expected": [
+      "heat",
+      "engine",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "heat",
+      "engine",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2454,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 316884
+  },
+  "created_at": "2026-04-22T12:07:30.336700+00:00",
+  "status": "completed"
+}

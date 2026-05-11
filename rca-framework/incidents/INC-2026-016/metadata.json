@@ -1,0 +1,64 @@
+{
+  "incident_id": "INC-2026-016",
+  "scenario": "glance-api-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "glance-api",
+    "actual_container": "glance_api",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T06:09:21.218371",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_glance_api.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "glance-api",
+    "actual_container": "glance_api",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T06:10:27.047506",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-016/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T06:07:21.218140+00:00",
+      "end": "2026-04-22T06:12:27.047320+00:00"
+    },
+    "count": 2053
+  },
+  "validation": {
+    "signatures_expected": [
+      "glance",
+      "stop",
+      "503"
+    ],
+    "signatures_found": [
+      "glance",
+      "stop",
+      "503"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2053,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 45334
+  },
+  "created_at": "2026-04-22T06:12:42.872998+00:00",
+  "status": "completed"
+}

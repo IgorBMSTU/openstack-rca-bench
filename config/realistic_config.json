@@ -1,0 +1,50 @@
+{
+  "ssh_user": "tripleo-admin",
+  "ssh_key": "~/.ssh/standkey",
+  "ssh_jump_host": "stack@10.197.75.10",
+  "control_node": "eng-101-aio-ceph-16-control1.ctlplane",
+  "control_node_ip": "10.197.76.21",
+  "storage_nodes": [
+    "eng-101-aio-ceph-16-storage1.ctlplane",
+    "eng-101-aio-ceph-16-storage2.ctlplane",
+    "eng-101-aio-ceph-16-storage3.ctlplane"
+  ],
+  "storage_node_ips": ["10.197.76.41", "10.197.76.42", "10.197.76.43"],
+  "undercloud_node": "eng-101-aio-ceph-16-undercloud.ctlplane",
+  "undercloud_node_ip": "10.197.75.10",
+  "log_locations": {
+    "containers": "/var/log/containers/",
+    "ceph": "/var/log/ceph/",
+    "system": "/var/log/messages",
+    "journal": "/var/log/journal/"
+  },
+  "incident_base_dir": "/home/accentos/rca-framework",
+  "default_duration": 180,
+  "safety": {
+    "delay_between_incidents": 300,
+    "pre_check_commands": [
+      "podman ps --format '{{.Names}}' | wc -l",
+      "ceph -s | grep health"
+    ],
+    "critical_services": ["mysql", "rabbitmq", "redis", "keystone"]
+  },
+  "service_mappings": {
+    "neutron-api-stop": "neutron_api",
+    "mysql-stop": "mysql",
+    "rabbitmq-stop": "rabbitmq",
+    "keystone-stop": "keystone",
+    "nova-api-stop": "nova_api",
+    "cinder-api-stop": "cinder_api",
+    "glance-api-stop": "glance_api",
+    "redis-stop": "redis",
+    "ironic-api-stop": "ironic_neutron_agent",
+    "heat-api-stop": "heat_api",
+    "nova-conductor-stop": "nova_conductor",
+    "neutron-ovs-stop": "neutron_ovs_agent"
+  },
+  "ceph_osd_mappings": {
+    "storage1": ["osd.0", "osd.1", "osd.2"],
+    "storage2": ["osd.3", "osd.4", "osd.5"],
+    "storage3": ["osd.6", "osd.7", "osd.8"]
+  }
+}

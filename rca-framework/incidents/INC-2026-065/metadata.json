@@ -1,0 +1,65 @@
+{
+  "incident_id": "INC-2026-065",
+  "scenario": "keystone-port-block",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "port-block",
+    "service": "keystone",
+    "port": 5000,
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-24T11:31:19.670452",
+    "status": "success",
+    "command": "sudo iptables -I INPUT 1 -p tcp --dport 5000 -j DROP -m comment --comment 'rca_fault_injection_keystone'",
+    "verification": "blocked",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "port-block",
+    "service": "keystone",
+    "port": 5000,
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-24T11:32:23.801314",
+    "status": "success",
+    "verification": "unblocked",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "/home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-065/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-24T11:29:19.670239+00:00",
+      "end": "2026-04-24T11:34:23.801198+00:00"
+    },
+    "count": 2035
+  },
+  "validation": {
+    "signatures_expected": [
+      "keystone",
+      "timeout",
+      "connection",
+      "5000"
+    ],
+    "signatures_found": [
+      "keystone",
+      "timeout",
+      "5000"
+    ],
+    "match_rate": 0.75,
+    "log_count": 2035,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 367720
+  },
+  "created_at": "2026-04-24T11:34:41.074993+00:00",
+  "status": "completed"
+}

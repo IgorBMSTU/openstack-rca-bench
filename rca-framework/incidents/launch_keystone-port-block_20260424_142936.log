@@ -1,0 +1,379 @@
+2026-04-24 14:29:37,027 - framework.injector.injector_v3_podman - INFO - FaultInjector initialized with base_dir: /home/biv/sync_biv/sync/article_dataset_1/rca-framework
+2026-04-24 14:29:37,027 - framework.injector.injector_v3_podman - INFO - FaultInjector initialized with base_dir: /home/biv/sync_biv/sync/article_dataset_1/rca-framework
+2026-04-24 14:29:37,028 - __main__ - INFO - Orchestrator ready. Base dir: /home/biv/sync_biv/sync/article_dataset_1/rca-framework
+2026-04-24 14:29:37,028 - __main__ - INFO - 
+============================================================
+[INCIDENT] INC-2026-065 | keystone-port-block on 10.197.76.21 for 60s
+============================================================
+2026-04-24 14:29:37,028 - __main__ - INFO - [PHASE 1/9] Pre-sanity checks...
+2026-04-24 14:29:37,028 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 14:29:37,028 - sanity_checks.sanity_checks - INFO - Running Comprehensive OpenStack Sanity Checks
+2026-04-24 14:29:37,028 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 14:29:37,028 - sanity_checks.sanity_checks - INFO - Running Pacemaker cluster checks...
+2026-04-24 14:29:37,028 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status
+2026-04-24 14:29:40,543 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status resources
+2026-04-24 14:29:42,625 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status --full
+2026-04-24 14:29:45,865 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status nodes
+2026-04-24 14:29:47,941 - sanity_checks.sanity_checks - INFO - Running OpenStack API checks...
+2026-04-24 14:30:16,970 - sanity_checks.sanity_checks - INFO - Running container status checks...
+2026-04-24 14:30:16,970 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:18,897 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:20,114 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:30:21,488 - framework.realistic_runner - INFO - Executing on 10.197.76.24: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:22,871 - framework.realistic_runner - INFO - Executing on 10.197.76.24: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:23,937 - framework.realistic_runner - INFO - Executing on 10.197.76.24: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:30:25,081 - framework.realistic_runner - INFO - Executing on 10.197.76.25: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:26,641 - framework.realistic_runner - INFO - Executing on 10.197.76.25: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:27,709 - framework.realistic_runner - INFO - Executing on 10.197.76.25: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:30:28,838 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:30,210 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:31,220 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:30:32,265 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:33,574 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:34,722 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:30:35,765 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:37,142 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:30:38,258 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:30:39,324 - sanity_checks.sanity_checks - INFO - Running Ceph health checks...
+2026-04-24 14:30:39,324 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo ceph -s
+2026-04-24 14:30:40,778 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo ceph osd status
+2026-04-24 14:30:42,369 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo ceph orch ps
+2026-04-24 14:30:43,973 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo ceph -s
+2026-04-24 14:30:45,253 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.42: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:30:45,253 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo ceph osd status
+2026-04-24 14:30:46,489 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.42: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:30:46,490 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo ceph orch ps
+2026-04-24 14:30:47,677 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.42: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:30:47,678 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo ceph -s
+2026-04-24 14:30:48,902 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.43: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:30:48,902 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo ceph osd status
+2026-04-24 14:30:50,017 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.43: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:30:50,018 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo ceph orch ps
+2026-04-24 14:30:51,189 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.43: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:30:51,190 - sanity_checks.sanity_checks - INFO - Running systemd service checks...
+2026-04-24 14:30:51,190 - framework.realistic_runner - INFO - Executing on 10.197.76.21: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:30:52,703 - framework.realistic_runner - INFO - Executing on 10.197.76.24: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:30:53,994 - framework.realistic_runner - INFO - Executing on 10.197.76.25: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:30:55,345 - framework.realistic_runner - INFO - Executing on 10.197.76.41: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:30:56,612 - framework.realistic_runner - INFO - Executing on 10.197.76.42: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:30:57,626 - framework.realistic_runner - INFO - Executing on 10.197.76.43: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:30:58,513 - sanity_checks.sanity_checks - INFO - Running OpenStack operations checks...
+2026-04-24 14:31:18,169 - sanity_checks.sanity_checks - INFO - 
+============================================================
+2026-04-24 14:31:18,169 - sanity_checks.sanity_checks - INFO - SANITY CHECK SUMMARY
+2026-04-24 14:31:18,169 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 14:31:18,170 - sanity_checks.sanity_checks - INFO - Total checks: 40
+2026-04-24 14:31:18,170 - sanity_checks.sanity_checks - INFO - Passed: 33
+2026-04-24 14:31:18,170 - sanity_checks.sanity_checks - INFO - Failed: 0
+2026-04-24 14:31:18,170 - sanity_checks.sanity_checks - INFO - Warnings: 7
+2026-04-24 14:31:18,170 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 14:31:18,173 - sanity_checks.sanity_checks - INFO - Report saved to /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-065/pre_sanity.json
+2026-04-24 14:31:18,173 - __main__ - INFO - [PHASE 1/9] Pre-sanity PASSED
+2026-04-24 14:31:18,173 - __main__ - INFO - [PHASE 2/9] Installing watchdog...
+2026-04-24 14:31:18,173 - __main__ - INFO - Executing on 10.197.76.21: nohup sh -c 'sleep 180; sudo iptables -D INPUT -p tcp --dport 5000 -j DROP -m comment --comment 'rca_fault_injection_keystone' || true' > /tmp/watchdog_keystone.log 2>&1 </dev/null & echo $!
+2026-04-24 14:31:19,669 - __main__ - INFO - [WATCHDOG] Installed on 10.197.76.21 PID=367720 (fires in 180s)
+2026-04-24 14:31:19,670 - __main__ - INFO - [PHASE 2/9] Watchdog installed PID=367720
+2026-04-24 14:31:19,670 - __main__ - INFO - [PHASE 3/9] Injecting fault...
+2026-04-24 14:31:19,670 - framework.injector.injector_v3_podman - INFO - [INJECTION] Blocking port 5000 for keystone on 10.197.76.21
+2026-04-24 14:31:19,670 - __main__ - INFO - Executing on 10.197.76.21: sudo iptables -I INPUT 1 -p tcp --dport 5000 -j DROP -m comment --comment 'rca_fault_injection_keystone'
+2026-04-24 14:31:22,764 - __main__ - INFO - Executing on 10.197.76.21: sudo iptables -L INPUT -n --line-numbers | grep 'rca_fault_injection_keystone'
+2026-04-24 14:31:23,741 - framework.injector.injector_v3_podman - INFO - [INJECTION] Success: port 5000 blocked
+2026-04-24 14:31:23,741 - __main__ - INFO - [PHASE 3/9] Injection status: success
+2026-04-24 14:31:23,741 - __main__ - INFO - [PHASE 4/9] Holding fault for 60s...
+2026-04-24 14:32:23,801 - __main__ - INFO - [PHASE 4/9] Hold complete
+2026-04-24 14:32:23,801 - __main__ - INFO - [PHASE 5/9] Rolling back (normal path)...
+2026-04-24 14:32:23,801 - framework.injector.injector_v3_podman - INFO - [RECOVERY] Unblocking port 5000 for keystone on 10.197.76.21
+2026-04-24 14:32:23,801 - __main__ - INFO - Executing on 10.197.76.21: sudo iptables -D INPUT -p tcp --dport 5000 -j DROP -m comment --comment 'rca_fault_injection_keystone'
+2026-04-24 14:32:26,816 - __main__ - INFO - Executing on 10.197.76.21: sudo iptables -L INPUT -n --line-numbers | grep 'rca_fault_injection_keystone'
+2026-04-24 14:32:27,845 - __main__ - ERROR -   Command failed on 10.197.76.21: 
+2026-04-24 14:32:27,845 - framework.injector.injector_v3_podman - INFO - [RECOVERY] Success: port 5000 unblocked
+2026-04-24 14:32:27,845 - __main__ - INFO - [PHASE 5/9] Rollback status: success
+2026-04-24 14:32:27,845 - __main__ - INFO - Executing on 10.197.76.21: kill 367720 2>/dev/null; rm -f /tmp/watchdog_*.log
+2026-04-24 14:32:28,738 - __main__ - INFO - [PHASE 6/9] Post-sanity checks (waiting 30s for stabilization)...
+2026-04-24 14:32:58,769 - framework.injector.injector_v3_podman - INFO - FaultInjector initialized with base_dir: /home/biv/sync_biv/sync/article_dataset_1/rca-framework
+2026-04-24 14:32:58,769 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 14:32:58,770 - sanity_checks.sanity_checks - INFO - Running Comprehensive OpenStack Sanity Checks
+2026-04-24 14:32:58,770 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 14:32:58,770 - sanity_checks.sanity_checks - INFO - Running Pacemaker cluster checks...
+2026-04-24 14:32:58,770 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status
+2026-04-24 14:33:01,638 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status resources
+2026-04-24 14:33:03,699 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status --full
+2026-04-24 14:33:07,105 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status nodes
+2026-04-24 14:33:09,357 - sanity_checks.sanity_checks - INFO - Running OpenStack API checks...
+2026-04-24 14:33:38,551 - sanity_checks.sanity_checks - INFO - Running container status checks...
+2026-04-24 14:33:38,551 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:39,798 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:40,960 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:33:42,386 - framework.realistic_runner - INFO - Executing on 10.197.76.24: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:43,742 - framework.realistic_runner - INFO - Executing on 10.197.76.24: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:44,853 - framework.realistic_runner - INFO - Executing on 10.197.76.24: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:33:45,946 - framework.realistic_runner - INFO - Executing on 10.197.76.25: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:47,583 - framework.realistic_runner - INFO - Executing on 10.197.76.25: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:48,793 - framework.realistic_runner - INFO - Executing on 10.197.76.25: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:33:49,772 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:51,140 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:52,306 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:33:53,433 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:54,917 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:55,949 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:33:56,989 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:58,321 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 14:33:59,403 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo podman ps --format '{{.Names}}'
+2026-04-24 14:34:00,514 - sanity_checks.sanity_checks - INFO - Running Ceph health checks...
+2026-04-24 14:34:00,514 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo ceph -s
+2026-04-24 14:34:01,958 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo ceph osd status
+2026-04-24 14:34:03,424 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo ceph orch ps
+2026-04-24 14:34:05,230 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo ceph -s
+2026-04-24 14:34:06,449 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.42: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:34:06,450 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo ceph osd status
+2026-04-24 14:34:07,623 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.42: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:34:07,624 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo ceph orch ps
+2026-04-24 14:34:08,849 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.42: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:34:08,850 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo ceph -s
+2026-04-24 14:34:09,981 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.43: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:34:09,982 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo ceph osd status
+2026-04-24 14:34:11,330 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.43: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:34:11,330 - framework.realistic_runner - INFO - Executing on 10.197.76.43: sudo ceph orch ps
+2026-04-24 14:34:12,481 - framework.realistic_runner - ERROR -   Command failed on 10.197.76.43: Error initializing cluster client: ObjectNotFound('RADOS object not found (error calling conf_read_file)')
+
+2026-04-24 14:34:12,482 - sanity_checks.sanity_checks - INFO - Running systemd service checks...
+2026-04-24 14:34:12,482 - framework.realistic_runner - INFO - Executing on 10.197.76.21: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:34:13,510 - framework.realistic_runner - INFO - Executing on 10.197.76.24: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:34:14,797 - framework.realistic_runner - INFO - Executing on 10.197.76.25: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:34:16,309 - framework.realistic_runner - INFO - Executing on 10.197.76.41: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:34:17,536 - framework.realistic_runner - INFO - Executing on 10.197.76.42: systemctl list-units 'tripleo-*' --state=failed --no-pager
+2026-04-24 14:34:18,550 - framework.realistic_runner - INFO - Executing on 10.197.76.43: systemctl list-units 'tripleo-*' --state=failed --no-pager
+[92m[PASS][0m Pacemaker Cluster Status (10.197.76.21): Cluster is online
+  Details: All nodes online
+[92m[PASS][0m Pacemaker Resources (10.197.76.21): All resources running
+  Details:   * ip-10.197.76.100	(ocf:heartbeat:IPaddr2):	 Started eng-101-astd-ceph-16-control1
+[92m[PASS][0m Failed Resource Actions (10.197.76.21): No failed actions
+[92m[PASS][0m Pacemaker Nodes (10.197.76.21): Online nodes: eng-101-astd-ceph-16-control1
+[92m[PASS][0m OpenStack Service List: Found 16 services, 0 enabled
+  Details: Services: monitor, nova, cinderv3, keystone, glance...
+[92m[PASS][0m OpenStack Hypervisors: 2/2 hypervisors UP
+  Details: Hypervisors: eng-101-astd-ceph-16-node1.novalocal, eng-101-astd-ceph-16-node2.novalocal
+[93m[WARN][0m Neutron Network Agents: 0/6 agents alive, 0/6 UP
+  Details: Agents: 6 total
+[92m[PASS][0m Cinder Volume Services: 3/3 enabled, 3/3 UP
+  Details: Services: 3 total
+[92m[PASS][0m Glance Images: Found 2 images
+  Details: Images: cirros-0.6.2, ubuntu-jammy...
+[92m[PASS][0m Nova Flavors: Found 11 flavors
+  Details: Flavors: c2_r1_d15, c1_r1_d10, c1_r128_d1...
+[93m[WARN][0m Container Status (controller - 10.197.76.21): Some containers not running (75/137)
+[93m[WARN][0m Exited Containers (controller - 10.197.76.21): Found 62 exited containers
+  Details: container-puppet-michman	Exited (0) 4 days ago
+container-puppet-heat_api	Exited (0) 4 days ago
+container-puppet-heat_api_cfn	Exited (0) 4 days ago
+container-puppet-glance_api_internal	Exited (0) 4 days ago
+container-puppet-placement	Exited (0) 4 days ago
+[92m[PASS][0m Critical Containers (controller - 10.197.76.21): All critical containers running
+[93m[WARN][0m Container Status (compute - 10.197.76.24): Some containers not running (18/30)
+[93m[WARN][0m Exited Containers (compute - 10.197.76.24): Found 12 exited containers
+  Details: container-puppet-crond	Exited (0) 4 days ago
+container-puppet-ovn_controller	Exited (0) 4 days ago
+container-puppet-nova_libvirt	Exited (0) 4 days ago
+container-puppet-iscsid	Exited (0) 4 days ago
+container-puppet-neutron	Exited (0) 4 days ago
+[92m[PASS][0m Critical Containers (compute - 10.197.76.24): All critical containers running
+[93m[WARN][0m Container Status (compute - 10.197.76.25): Some containers not running (18/30)
+[93m[WARN][0m Exited Containers (compute - 10.197.76.25): Found 12 exited containers
+  Details: container-puppet-nova_libvirt	Exited (0) 4 days ago
+container-puppet-ovn_controller	Exited (0) 4 days ago
+container-puppet-crond	Exited (0) 4 days ago
+container-puppet-iscsid	Exited (0) 4 days ago
+container-puppet-neutron	Exited (0) 4 days ago
+[92m[PASS][0m Critical Containers (compute - 10.197.76.25): All critical containers running
+[92m[PASS][0m Container Status (storage - 10.197.76.41): All containers running (7/7)
+[92m[PASS][0m Exited Containers (storage - 10.197.76.41): No exited containers
+[92m[PASS][0m ceph-mgr: All critical containers running
+[92m[PASS][0m Container Status (storage - 10.197.76.42): All containers running (7/7)
+[92m[PASS][0m Exited Containers (storage - 10.197.76.42): No exited containers
+[92m[PASS][0m ceph-mgr: All critical containers running
+[92m[PASS][0m Container Status (storage - 10.197.76.43): All containers running (6/6)
+[92m[PASS][0m Exited Containers (storage - 10.197.76.43): No exited containers
+[92m[PASS][0m ceph-mgr: All critical containers running (optional missing: ceph-mgr)
+[92m[PASS][0m Ceph Cluster Health (10.197.76.41): Ceph cluster healthy
+[92m[PASS][0m Ceph OSD Status (10.197.76.41): All OSDs are up
+[92m[PASS][0m Ceph Orchestrator Services (10.197.76.41): Ceph orchestrator services running
+[92m[PASS][0m TripleO Systemd Services (controller - 10.197.76.21): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (compute - 10.197.76.24): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (compute - 10.197.76.25): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (storage - 10.197.76.41): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (storage - 10.197.76.42): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (storage - 10.197.76.43): No failed TripleO services
+[92m[PASS][0m OpenStack Network List: Network list successful (2 networks)
+[92m[PASS][0m OpenStack Quota Usage: Quota information accessible
+[92m[PASS][0m OpenStack Server List: Server list successful (0 servers)
+[92m[PASS][0m Pacemaker Cluster Status (10.197.76.21): Cluster is online
+  Details: All nodes online
+[92m[PASS][0m Pacemaker Resources (10.197.76.21): All resources running
+  Details:   * ip-10.197.76.100	(ocf:heartbeat:IPaddr2):	 Started eng-101-astd-ceph-16-control1
+[92m[PASS][0m Failed Resource Actions (10.197.76.21): No failed actions
+[92m[PASS][0m Pacemaker Nodes (10.197.76.21): Online nodes: eng-101-astd-ceph-16-control1
+[92m[PASS][0m OpenStack Service List: Found 16 services, 0 enabled
+  Details: Services: monitor, nova, cinderv3, keystone, glance...
+[92m[PASS][0m OpenStack Hypervisors: 2/2 hypervisors UP
+  Details: Hypervisors: eng-101-astd-ceph-16-node1.novalocal, eng-101-astd-ceph-16-node2.novalocal
+[93m[WARN][0m Neutron Network Agents: 0/6 agents alive, 0/6 UP
+  Details: Agents: 6 total
+[92m[PASS][0m Cinder Volume Services: 3/3 enabled, 3/3 UP
+  Details: Services: 3 total
+[92m[PASS][0m Glance Images: Found 2 images
+  Details: Images: cirros-0.6.2, ubuntu-jammy...
+[92m[PASS][0m Nova Flavors: Found 11 flavors
+  Details: Flavors: c2_r1_d15, c1_r1_d10, c1_r128_d1...
+[93m[WARN][0m Container Status (controller - 10.197.76.21): Some containers not running (75/137)
+[93m[WARN][0m Exited Containers (controller - 10.197.76.21): Found 62 exited containers
+  Details: container-puppet-michman	Exited (0) 4 days ago
+container-puppet-heat_api	Exited (0) 4 days ago
+container-puppet-heat_api_cfn	Exited (0) 4 days ago
+container-puppet-glance_api_internal	Exited (0) 4 days ago
+container-puppet-placement	Exited (0) 4 days ago
+[92m[PASS][0m Critical Containers (controller - 10.197.76.21): All critical containers running
+[93m[WARN][0m Container Status (compute - 10.197.76.24): Some containers not running (18/30)
+[93m[WARN][0m Exited Containers (compute - 10.197.76.24): Found 12 exited containers
+  Details: container-puppet-crond	Exited (0) 4 days ago
+container-puppet-ovn_controller	Exited (0) 4 days ago
+container-puppet-nova_libvirt	Exited (0) 4 days ago
+container-puppet-iscsid	Exited (0) 4 days ago
+container-puppet-neutron	Exited (0) 4 days ago
+[92m[PASS][0m Critical Containers (compute - 10.197.76.24): All critical containers running
+[93m[WARN][0m Container Status (compute - 10.197.76.25): Some containers not running (18/30)
+[93m[WARN][0m Exited Containers (compute - 10.197.76.25): Found 12 exited containers
+  Details: container-puppet-nova_libvirt	Exited (0) 4 days ago
+container-puppet-ovn_controller	Exited (0) 4 days ago
+container-puppet-crond	Exited (0) 4 days ago
+container-puppet-iscsid	Exited (0) 4 days ago
+container-puppet-neutron	Exited (0) 4 days ago
+[92m[PASS][0m Critical Containers (compute - 10.197.76.25): All critical containers running
+[92m[PASS][0m Container Status (storage - 10.197.76.41): All containers running (7/7)
+[92m[PASS][0m Exited Containers (storage - 10.197.76.41): No exited containers
+[92m[PASS][0m ceph-mgr: All critical containers running
+[92m[PASS][0m Container Status (storage - 10.197.76.42): All containers running (7/7)
+[92m[PASS][0m Exited Containers (storage - 10.197.76.42): No exited containers
+[92m[PASS][0m ceph-mgr: All critical containers running
+[92m[PASS][0m Container Status (storage - 10.197.76.43): All containers running (6/6)
+[92m[PASS][0m Exited Containers (storage - 10.197.76.43): No exited containers
+[92m[PASS][0m ceph-mgr: All critical containers running (optional missing: ceph-mgr)
+[92m[PASS][0m Ceph Cluster Health (10.197.76.41): Ceph cluster healthy
+[92m[PASS][0m Ceph OSD Status (10.197.76.41): All OSDs are up
+[92m[PASS][0m Ceph Orchestrator Services (10.197.76.41): Ceph orchestrator services running
+2026-04-24 14:34:19,670 - sanity_checks.sanity_checks - INFO - Running OpenStack operations checks...
+2026-04-24 14:34:39,874 - sanity_checks.sanity_checks - INFO - 
+============================================================
+2026-04-24 14:34:39,875 - sanity_checks.sanity_checks - INFO - SANITY CHECK SUMMARY
+2026-04-24 14:34:39,875 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 14:34:39,875 - sanity_checks.sanity_checks - INFO - Total checks: 40
+2026-04-24 14:34:39,875 - sanity_checks.sanity_checks - INFO - Passed: 33
+2026-04-24 14:34:39,875 - sanity_checks.sanity_checks - INFO - Failed: 0
+2026-04-24 14:34:39,875 - sanity_checks.sanity_checks - INFO - Warnings: 7
+2026-04-24 14:34:39,876 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 14:34:39,878 - sanity_checks.sanity_checks - INFO - Report saved to /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-065/post_sanity.json
+2026-04-24 14:34:39,879 - __main__ - INFO - [PHASE 6/9] Post-sanity PASSED
+2026-04-24 14:34:39,879 - __main__ - INFO - [PHASE 7/9] Exporting logs from Loki...
+2026-04-24 14:34:39,879 - orchestrator.loki_exporter - INFO - Loki query: {job="systemd-journal"} from 2026-04-24T11:29:19.670239+00:00 to 2026-04-24T11:34:23.801198+00:00
+2026-04-24 14:34:40,997 - orchestrator.loki_exporter - INFO - Retrieved 2035 log lines from Loki
+2026-04-24 14:34:41,061 - orchestrator.loki_exporter - INFO - Exported 2035 logs to /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-065/raw_logs.json.gz (125755 bytes gzipped)
+2026-04-24 14:34:41,062 - __main__ - INFO - [PHASE 7/9] Exported 2035 log lines
+2026-04-24 14:34:41,072 - __main__ - INFO - [PHASE 8/9] Validating logs...
+2026-04-24 14:34:41,074 - __main__ - INFO - [PHASE 8/9] Validation: 75% signatures matched
+2026-04-24 14:34:41,074 - __main__ - INFO - [PHASE 9/9] Saving metadata...
+2026-04-24 14:34:41,075 - __main__ - INFO - [PHASE 9/9] Metadata saved to /home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-065/metadata.json
+2026-04-24 14:34:41,075 - __main__ - INFO - Cooldown 300s for stabilization...
+2026-04-24 14:39:41,156 - __main__ - INFO - Cooldown complete
+2026-04-24 14:39:41,156 - __main__ - INFO - 
+============================================================
+[INCIDENT] INC-2026-065 COMPLETED ✅
+============================================================
+[92m[PASS][0m TripleO Systemd Services (controller - 10.197.76.21): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (compute - 10.197.76.24): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (compute - 10.197.76.25): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (storage - 10.197.76.41): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (storage - 10.197.76.42): No failed TripleO services
+[92m[PASS][0m TripleO Systemd Services (storage - 10.197.76.43): No failed TripleO services
+[92m[PASS][0m OpenStack Network List: Network list successful (2 networks)
+[92m[PASS][0m OpenStack Quota Usage: Quota information accessible
+[92m[PASS][0m OpenStack Server List: Server list successful (0 servers)
+{
+  "incident_id": "INC-2026-065",
+  "status": "completed",
+  "directory": "/home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-065",
+  "metadata": {
+    "incident_id": "INC-2026-065",
+    "scenario": "keystone-port-block",
+    "target_host": "10.197.76.21",
+    "duration_seconds": 60,
+    "injection": {
+      "scenario": "port-block",
+      "service": "keystone",
+      "port": 5000,
+      "target": "10.197.76.21",
+      "injection_time": "2026-04-24T11:31:19.670452",
+      "status": "success",
+      "command": "sudo iptables -I INPUT 1 -p tcp --dport 5000 -j DROP -m comment --comment 'rca_fault_injection_keystone'",
+      "verification": "blocked",
+      "stdout": "",
+      "stderr": ""
+    },
+    "recovery": {
+      "scenario": "port-block",
+      "service": "keystone",
+      "port": 5000,
+      "target": "10.197.76.21",
+      "recovery_time": "2026-04-24T11:32:23.801314",
+      "status": "success",
+      "verification": "unblocked",
+      "stdout": "",
+      "stderr": ""
+    },
+    "data": {
+      "raw_log_file": "/home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-065/raw_logs.json.gz",
+      "loki_query": "{job=\"systemd-journal\"}",
+      "time_window": {
+        "start": "2026-04-24T11:29:19.670239+00:00",
+        "end": "2026-04-24T11:34:23.801198+00:00"
+      },
+      "count": 2035
+    },
+    "validation": {
+      "signatures_expected": [
+        "keystone",
+        "timeout",
+        "connection",
+        "5000"
+      ],
+      "signatures_found": [
+        "keystone",
+        "timeout",
+        "5000"
+      ],
+      "match_rate": 0.75,
+      "log_count": 2035,
+      "has_errors": false
+    },
+    "sanity": {
+      "pre_check_passed": true,
+      "post_check_passed": true,
+      "recovery_time_seconds": null
+    },
+    "safety": {
+      "watchdog_installed": true,
+      "watchdog_pid": 367720
+    },
+    "created_at": "2026-04-24T11:34:41.074993+00:00",
+    "status": "completed"
+  }
+}

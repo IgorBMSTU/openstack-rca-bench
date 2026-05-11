@@ -1,0 +1,63 @@
+{
+  "incident_id": "INC-2026-031",
+  "scenario": "rabbitmq-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 120,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "rabbitmq",
+    "actual_container": "rabbitmq-bundle-podman-0",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T11:34:24.589646",
+    "status": "success",
+    "command": "sudo pcs resource disable rabbitmq-bundle",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "rabbitmq",
+    "actual_container": "rabbitmq-bundle-podman-0",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T11:36:43.375719",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-031/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T11:32:24.589438+00:00",
+      "end": "2026-04-22T11:38:43.375675+00:00"
+    },
+    "count": 2429
+  },
+  "validation": {
+    "signatures_expected": [
+      "rabbitmq",
+      "ERROR",
+      "connection"
+    ],
+    "signatures_found": [
+      "rabbitmq",
+      "ERROR"
+    ],
+    "match_rate": 0.6666666666666666,
+    "log_count": 2429,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 205154
+  },
+  "created_at": "2026-04-22T11:39:00.407448+00:00",
+  "status": "completed"
+}

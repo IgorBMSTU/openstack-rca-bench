@@ -1,0 +1,1033 @@
+{
+  "total_incidents": 64,
+  "rule_based_accuracy": 0.359375,
+  "llm_accuracy": 0.03125,
+  "rule_based_correct": 23,
+  "llm_correct": 2,
+  "detailed_results": [
+    {
+      "incident_id": "INC-2026-002",
+      "true_cause": "nova_compute",
+      "rule_based": {
+        "root_cause": "keystone",
+        "confidence": 0.7,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1847564
+    },
+    {
+      "incident_id": "INC-2026-004",
+      "true_cause": "nova_compute",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1851856
+    },
+    {
+      "incident_id": "INC-2026-006",
+      "true_cause": "nova_compute",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1187953
+    },
+    {
+      "incident_id": "INC-2026-007",
+      "true_cause": "neutron-api",
+      "rule_based": {
+        "root_cause": "neutron-server",
+        "confidence": 0.7,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1294221
+    },
+    {
+      "incident_id": "INC-2026-009",
+      "true_cause": "ovn-controller",
+      "rule_based": {
+        "root_cause": "ovn-controller",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1139685
+    },
+    {
+      "incident_id": "INC-2026-010",
+      "true_cause": "ovn-controller",
+      "rule_based": {
+        "root_cause": "ovn-controller",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1111862
+    },
+    {
+      "incident_id": "INC-2026-011",
+      "true_cause": "ovn-controller",
+      "rule_based": {
+        "root_cause": "ovn-controller",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1138052
+    },
+    {
+      "incident_id": "INC-2026-012",
+      "true_cause": "cinder-api",
+      "rule_based": {
+        "root_cause": "cinder-api",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1140105
+    },
+    {
+      "incident_id": "INC-2026-013",
+      "true_cause": "nova_compute",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1169299
+    },
+    {
+      "incident_id": "INC-2026-014",
+      "true_cause": "ovn-metadata-agent",
+      "rule_based": {
+        "root_cause": "ovn-metadata-agent",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1134756
+    },
+    {
+      "incident_id": "INC-2026-015",
+      "true_cause": "nova-api",
+      "rule_based": {
+        "root_cause": "keystone",
+        "confidence": 0.7,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1195223
+    },
+    {
+      "incident_id": "INC-2026-016",
+      "true_cause": "glance-api",
+      "rule_based": {
+        "root_cause": "glance-api",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1135793
+    },
+    {
+      "incident_id": "INC-2026-017",
+      "true_cause": "keystone",
+      "rule_based": {
+        "root_cause": "keystone",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1181212
+    },
+    {
+      "incident_id": "INC-2026-018",
+      "true_cause": "heat-api",
+      "rule_based": {
+        "root_cause": "heat-api",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1171837
+    },
+    {
+      "incident_id": "INC-2026-019",
+      "true_cause": "placement-api",
+      "rule_based": {
+        "root_cause": "placement-api",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1146210
+    },
+    {
+      "incident_id": "INC-2026-020",
+      "true_cause": "nova-conductor",
+      "rule_based": {
+        "root_cause": "nova-conductor",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1166402
+    },
+    {
+      "incident_id": "INC-2026-021",
+      "true_cause": "nova-scheduler",
+      "rule_based": {
+        "root_cause": "nova-scheduler",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1185131
+    },
+    {
+      "incident_id": "INC-2026-022",
+      "true_cause": "nova-metadata",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1249254
+    },
+    {
+      "incident_id": "INC-2026-023",
+      "true_cause": "redis",
+      "rule_based": {
+        "root_cause": "keystone",
+        "confidence": 0.7,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1339993
+    },
+    {
+      "incident_id": "INC-2026-024",
+      "true_cause": "nova_compute",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1122106
+    },
+    {
+      "incident_id": "INC-2026-025",
+      "true_cause": "ceph-osd-0",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1222203
+    },
+    {
+      "incident_id": "INC-2026-026",
+      "true_cause": "ceph-osd-1",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1144502
+    },
+    {
+      "incident_id": "INC-2026-027",
+      "true_cause": "ceph-osd-2",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1179824
+    },
+    {
+      "incident_id": "INC-2026-029",
+      "true_cause": "ceph-mon",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1483815
+    },
+    {
+      "incident_id": "INC-2026-030",
+      "true_cause": "ceph-mgr",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1445154
+    },
+    {
+      "incident_id": "INC-2026-031",
+      "true_cause": "rabbitmq",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1404008
+    },
+    {
+      "incident_id": "INC-2026-032",
+      "true_cause": "mysql",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": true,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1482398
+    },
+    {
+      "incident_id": "INC-2026-033",
+      "true_cause": "heat-engine",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1276253
+    },
+    {
+      "incident_id": "INC-2026-034",
+      "true_cause": "heat-api-cfn",
+      "rule_based": {
+        "root_cause": "heat-api-cfn",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1196018
+    },
+    {
+      "incident_id": "INC-2026-036",
+      "true_cause": "nova-vnc-proxy",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1219732
+    },
+    {
+      "incident_id": "INC-2026-037",
+      "true_cause": "ovn-metadata-agent",
+      "rule_based": {
+        "root_cause": "ovn-metadata-agent",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1171869
+    },
+    {
+      "incident_id": "INC-2026-038",
+      "true_cause": "neutron-dhcp",
+      "rule_based": {
+        "root_cause": "neutron-dhcp",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1287685
+    },
+    {
+      "incident_id": "INC-2026-039",
+      "true_cause": "cinder-scheduler",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1150532
+    },
+    {
+      "incident_id": "INC-2026-040",
+      "true_cause": "haproxy",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1149198
+    },
+    {
+      "incident_id": "INC-2026-041",
+      "true_cause": "cinder-volume",
+      "rule_based": {
+        "root_cause": "keystone",
+        "confidence": 0.7,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1262738
+    },
+    {
+      "incident_id": "INC-2026-042",
+      "true_cause": "ovn-controller",
+      "rule_based": {
+        "root_cause": "ovn-controller",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1152435
+    },
+    {
+      "incident_id": "INC-2026-043",
+      "true_cause": "glance-api-internal",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1158815
+    },
+    {
+      "incident_id": "INC-2026-044",
+      "true_cause": "skyline-apiserver",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1218349
+    },
+    {
+      "incident_id": "INC-2026-045",
+      "true_cause": "iscsid",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1258535
+    },
+    {
+      "incident_id": "INC-2026-046",
+      "true_cause": "nova-compute",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1253027
+    },
+    {
+      "incident_id": "INC-2026-047",
+      "true_cause": "ovn-metadata-agent",
+      "rule_based": {
+        "root_cause": "ovn-metadata-agent",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1197960
+    },
+    {
+      "incident_id": "INC-2026-049",
+      "true_cause": "ovn-northd",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1130656
+    },
+    {
+      "incident_id": "INC-2026-050",
+      "true_cause": "ovn-north-db",
+      "rule_based": {
+        "root_cause": "keystone",
+        "confidence": 0.7,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1187019
+    },
+    {
+      "incident_id": "INC-2026-051",
+      "true_cause": "ovn-south-db",
+      "rule_based": {
+        "root_cause": "mysql",
+        "confidence": 0.6,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1168479
+    },
+    {
+      "incident_id": "INC-2026-052",
+      "true_cause": "skyline-console",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1131560
+    },
+    {
+      "incident_id": "INC-2026-053",
+      "true_cause": "grafana",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1203648
+    },
+    {
+      "incident_id": "INC-2026-054",
+      "true_cause": "prometheus",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1198468
+    },
+    {
+      "incident_id": "INC-2026-055",
+      "true_cause": "ovn-controller",
+      "rule_based": {
+        "root_cause": "ovn-controller",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1154063
+    },
+    {
+      "incident_id": "INC-2026-056",
+      "true_cause": "nova-compute",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1202630
+    },
+    {
+      "incident_id": "INC-2026-057",
+      "true_cause": "iscsid",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1150776
+    },
+    {
+      "incident_id": "INC-2026-059",
+      "true_cause": "nova-compute",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1282038
+    },
+    {
+      "incident_id": "INC-2026-060",
+      "true_cause": "ovn-controller",
+      "rule_based": {
+        "root_cause": "ovn-controller",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1248632
+    },
+    {
+      "incident_id": "INC-2026-061",
+      "true_cause": "ovn-metadata-agent",
+      "rule_based": {
+        "root_cause": "keystone",
+        "confidence": 0.7,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1247341
+    },
+    {
+      "incident_id": "INC-2026-062",
+      "true_cause": "nova-compute",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1295673
+    },
+    {
+      "incident_id": "INC-2026-063",
+      "true_cause": "ovn-controller",
+      "rule_based": {
+        "root_cause": "ovn-controller",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1248768
+    },
+    {
+      "incident_id": "INC-2026-064",
+      "true_cause": "ovn-metadata-agent",
+      "rule_based": {
+        "root_cause": "ovn-metadata-agent",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1246806
+    },
+    {
+      "incident_id": "INC-2026-065",
+      "true_cause": "keystone",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1131033
+    },
+    {
+      "incident_id": "INC-2026-066",
+      "true_cause": "nova-api",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1264554
+    },
+    {
+      "incident_id": "INC-2026-067",
+      "true_cause": "neutron-api",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1303353
+    },
+    {
+      "incident_id": "INC-2026-068",
+      "true_cause": "glance-api",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1293728
+    },
+    {
+      "incident_id": "INC-2026-069",
+      "true_cause": "mysql",
+      "rule_based": {
+        "root_cause": "unknown",
+        "confidence": 0.1,
+        "correct": false
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": true,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1346318
+    },
+    {
+      "incident_id": "INC-2026-070",
+      "true_cause": "rabbitmq",
+      "rule_based": {
+        "root_cause": "rabbitmq",
+        "confidence": 0.6,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1315063
+    },
+    {
+      "incident_id": "INC-2026-074",
+      "true_cause": "keystone",
+      "rule_based": {
+        "root_cause": "keystone",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1304147
+    },
+    {
+      "incident_id": "INC-2026-075",
+      "true_cause": "nova-api",
+      "rule_based": {
+        "root_cause": "nova-api",
+        "confidence": 0.7,
+        "correct": true
+      },
+      "llm": {
+        "root_cause": "mysql",
+        "confidence": 0.6000000000000001,
+        "correct": false,
+        "method": "llm-fallback"
+      },
+      "logs_length": 1334483
+    }
+  ]
+}

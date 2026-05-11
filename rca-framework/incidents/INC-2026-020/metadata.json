@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-020",
+  "scenario": "nova-conductor-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "nova-conductor",
+    "actual_container": "nova_conductor",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T07:08:49.966732",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_nova_conductor.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "nova-conductor",
+    "actual_container": "nova_conductor",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T07:09:57.389530",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-020/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T07:06:49.966525+00:00",
+      "end": "2026-04-22T07:11:57.389346+00:00"
+    },
+    "count": 2120
+  },
+  "validation": {
+    "signatures_expected": [
+      "nova",
+      "conductor",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "nova",
+      "conductor",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2120,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 264302
+  },
+  "created_at": "2026-04-22T07:12:13.522979+00:00",
+  "status": "completed"
+}

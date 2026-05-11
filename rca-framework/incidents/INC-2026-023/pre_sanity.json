@@ -1,0 +1,291 @@
+{
+  "timestamp": "2026-04-22T10:57:54.468630",
+  "summary": {
+    "total": 40,
+    "passed": 32,
+    "failed": 0,
+    "warned": 8
+  },
+  "results": [
+    {
+      "name": "Pacemaker Cluster Status (10.197.76.21)",
+      "status": "PASS",
+      "message": "Cluster is online",
+      "details": "All nodes online",
+      "timestamp": "2026-04-22T10:56:19.982383"
+    },
+    {
+      "name": "Pacemaker Resources (10.197.76.21)",
+      "status": "PASS",
+      "message": "All resources running",
+      "details": "  * ip-10.197.76.100\t(ocf:heartbeat:IPaddr2):\t Started eng-101-astd-ceph-16-control1",
+      "timestamp": "2026-04-22T10:56:22.361613"
+    },
+    {
+      "name": "Failed Resource Actions (10.197.76.21)",
+      "status": "WARN",
+      "message": "Non-critical failed actions found",
+      "details": "Failed Resource Actions:\n  * rabbitmq_monitor_10000 on rabbitmq-bundle-0 'error' (1): call=41, status='Timed Out', exitreason='Resource agent did not complete within 40s', last-rc-change='Sun Apr 19 19:13:45 2026', queued=0ms, exec=0ms\n\nTickets:\n\nPCSD Status:\n  eng-101-astd-ceph-16-control1: Online\n\nDaemon Status:\n  corosync: active/enabled\n  pacemaker: active/enabled\n  pcsd: active/enabled",
+      "timestamp": "2026-04-22T10:56:25.126803"
+    },
+    {
+      "name": "Pacemaker Nodes (10.197.76.21)",
+      "status": "PASS",
+      "message": "Online nodes: eng-101-astd-ceph-16-control1",
+      "details": "",
+      "timestamp": "2026-04-22T10:56:27.350616"
+    },
+    {
+      "name": "OpenStack Service List",
+      "status": "PASS",
+      "message": "Found 16 services, 0 enabled",
+      "details": "Services: monitor, nova, cinderv3, keystone, glance...",
+      "timestamp": "2026-04-22T10:56:31.966342"
+    },
+    {
+      "name": "OpenStack Hypervisors",
+      "status": "PASS",
+      "message": "2/2 hypervisors UP",
+      "details": "Hypervisors: eng-101-astd-ceph-16-node1.novalocal, eng-101-astd-ceph-16-node2.novalocal",
+      "timestamp": "2026-04-22T10:56:37.480735"
+    },
+    {
+      "name": "Neutron Network Agents",
+      "status": "WARN",
+      "message": "0/6 agents alive, 0/6 UP",
+      "details": "Agents: 6 total",
+      "timestamp": "2026-04-22T10:56:42.404560"
+    },
+    {
+      "name": "Cinder Volume Services",
+      "status": "PASS",
+      "message": "3/3 enabled, 3/3 UP",
+      "details": "Services: 3 total",
+      "timestamp": "2026-04-22T10:56:48.022280"
+    },
+    {
+      "name": "Glance Images",
+      "status": "PASS",
+      "message": "Found 2 images",
+      "details": "Images: cirros-0.6.2, ubuntu-jammy...",
+      "timestamp": "2026-04-22T10:56:52.666552"
+    },
+    {
+      "name": "Nova Flavors",
+      "status": "PASS",
+      "message": "Found 11 flavors",
+      "details": "Flavors: c2_r1_d15, c1_r1_d10, c1_r128_d1...",
+      "timestamp": "2026-04-22T10:56:57.692764"
+    },
+    {
+      "name": "Container Status (controller - 10.197.76.21)",
+      "status": "WARN",
+      "message": "Some containers not running (73/135)",
+      "details": "",
+      "timestamp": "2026-04-22T10:56:59.216339"
+    },
+    {
+      "name": "Exited Containers (controller - 10.197.76.21)",
+      "status": "WARN",
+      "message": "Found 62 exited containers",
+      "details": "container-puppet-michman\tExited (0) 2 days ago\ncontainer-puppet-heat_api\tExited (0) 2 days ago\ncontainer-puppet-heat_api_cfn\tExited (0) 2 days ago\ncontainer-puppet-glance_api_internal\tExited (0) 2 days ago\ncontainer-puppet-placement\tExited (0) 2 days ago",
+      "timestamp": "2026-04-22T10:57:00.140391"
+    },
+    {
+      "name": "Critical Containers (controller - 10.197.76.21)",
+      "status": "PASS",
+      "message": "All critical containers running",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:01.209308"
+    },
+    {
+      "name": "Container Status (compute - 10.197.76.24)",
+      "status": "WARN",
+      "message": "Some containers not running (18/30)",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:02.471391"
+    },
+    {
+      "name": "Exited Containers (compute - 10.197.76.24)",
+      "status": "WARN",
+      "message": "Found 12 exited containers",
+      "details": "container-puppet-crond\tExited (0) 2 days ago\ncontainer-puppet-ovn_controller\tExited (0) 2 days ago\ncontainer-puppet-nova_libvirt\tExited (0) 2 days ago\ncontainer-puppet-iscsid\tExited (0) 2 days ago\ncontainer-puppet-neutron\tExited (0) 2 days ago",
+      "timestamp": "2026-04-22T10:57:03.411335"
+    },
+    {
+      "name": "Critical Containers (compute - 10.197.76.24)",
+      "status": "PASS",
+      "message": "All critical containers running",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:04.287020"
+    },
+    {
+      "name": "Container Status (compute - 10.197.76.25)",
+      "status": "WARN",
+      "message": "Some containers not running (18/30)",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:05.585624"
+    },
+    {
+      "name": "Exited Containers (compute - 10.197.76.25)",
+      "status": "WARN",
+      "message": "Found 12 exited containers",
+      "details": "container-puppet-nova_libvirt\tExited (0) 2 days ago\ncontainer-puppet-ovn_controller\tExited (0) 2 days ago\ncontainer-puppet-crond\tExited (0) 2 days ago\ncontainer-puppet-iscsid\tExited (0) 2 days ago\ncontainer-puppet-neutron\tExited (0) 2 days ago",
+      "timestamp": "2026-04-22T10:57:06.684089"
+    },
+    {
+      "name": "Critical Containers (compute - 10.197.76.25)",
+      "status": "PASS",
+      "message": "All critical containers running",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:07.571814"
+    },
+    {
+      "name": "Container Status (storage - 10.197.76.41)",
+      "status": "PASS",
+      "message": "All containers running (7/7)",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:08.776829"
+    },
+    {
+      "name": "Exited Containers (storage - 10.197.76.41)",
+      "status": "PASS",
+      "message": "No exited containers",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:09.753673"
+    },
+    {
+      "name": "ceph-mgr",
+      "status": "PASS",
+      "message": "All critical containers running",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:10.624719"
+    },
+    {
+      "name": "Container Status (storage - 10.197.76.42)",
+      "status": "PASS",
+      "message": "All containers running (7/7)",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:11.819424"
+    },
+    {
+      "name": "Exited Containers (storage - 10.197.76.42)",
+      "status": "PASS",
+      "message": "No exited containers",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:12.825204"
+    },
+    {
+      "name": "ceph-mgr",
+      "status": "PASS",
+      "message": "All critical containers running",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:13.614070"
+    },
+    {
+      "name": "Container Status (storage - 10.197.76.43)",
+      "status": "PASS",
+      "message": "All containers running (6/6)",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:14.789187"
+    },
+    {
+      "name": "Exited Containers (storage - 10.197.76.43)",
+      "status": "PASS",
+      "message": "No exited containers",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:15.766043"
+    },
+    {
+      "name": "ceph-mgr",
+      "status": "PASS",
+      "message": "All critical containers running (optional missing: ceph-mgr)",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:16.657943"
+    },
+    {
+      "name": "Ceph Cluster Health (10.197.76.41)",
+      "status": "PASS",
+      "message": "Ceph cluster healthy",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:18.315112"
+    },
+    {
+      "name": "Ceph OSD Status (10.197.76.41)",
+      "status": "PASS",
+      "message": "All OSDs are up",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:19.769562"
+    },
+    {
+      "name": "Ceph Orchestrator Services (10.197.76.41)",
+      "status": "PASS",
+      "message": "Ceph orchestrator services running",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:21.129145"
+    },
+    {
+      "name": "TripleO Systemd Services (controller - 10.197.76.21)",
+      "status": "PASS",
+      "message": "No failed TripleO services",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:29.094417"
+    },
+    {
+      "name": "TripleO Systemd Services (compute - 10.197.76.24)",
+      "status": "PASS",
+      "message": "No failed TripleO services",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:30.248213"
+    },
+    {
+      "name": "TripleO Systemd Services (compute - 10.197.76.25)",
+      "status": "PASS",
+      "message": "No failed TripleO services",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:31.386685"
+    },
+    {
+      "name": "TripleO Systemd Services (storage - 10.197.76.41)",
+      "status": "PASS",
+      "message": "No failed TripleO services",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:32.607105"
+    },
+    {
+      "name": "TripleO Systemd Services (storage - 10.197.76.42)",
+      "status": "PASS",
+      "message": "No failed TripleO services",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:33.387450"
+    },
+    {
+      "name": "TripleO Systemd Services (storage - 10.197.76.43)",
+      "status": "PASS",
+      "message": "No failed TripleO services",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:34.240607"
+    },
+    {
+      "name": "OpenStack Network List",
+      "status": "PASS",
+      "message": "Network list successful (2 networks)",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:39.399938"
+    },
+    {
+      "name": "OpenStack Quota Usage",
+      "status": "PASS",
+      "message": "Quota information accessible",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:49.056906"
+    },
+    {
+      "name": "OpenStack Server List",
+      "status": "PASS",
+      "message": "Server list successful (0 servers)",
+      "details": "",
+      "timestamp": "2026-04-22T10:57:54.468235"
+    }
+  ]
+}

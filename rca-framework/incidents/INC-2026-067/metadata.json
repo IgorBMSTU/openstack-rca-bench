@@ -1,0 +1,65 @@
+{
+  "incident_id": "INC-2026-067",
+  "scenario": "neutron-api-port-block",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 120,
+  "injection": {
+    "scenario": "port-block",
+    "service": "neutron-api",
+    "port": 9696,
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-24T11:53:32.251320",
+    "status": "success",
+    "command": "sudo iptables -I INPUT 1 -p tcp --dport 9696 -j DROP -m comment --comment 'rca_fault_injection_neutron-api'",
+    "verification": "blocked",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "port-block",
+    "service": "neutron-api",
+    "port": 9696,
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-24T11:55:36.485575",
+    "status": "success",
+    "verification": "unblocked",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "/home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-067/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-24T11:51:32.251231+00:00",
+      "end": "2026-04-24T11:57:36.485373+00:00"
+    },
+    "count": 2179
+  },
+  "validation": {
+    "signatures_expected": [
+      "neutron",
+      "timeout",
+      "connection",
+      "9696"
+    ],
+    "signatures_found": [
+      "neutron",
+      "timeout",
+      "9696"
+    ],
+    "match_rate": 0.75,
+    "log_count": 2179,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 450722
+  },
+  "created_at": "2026-04-24T11:57:54.246273+00:00",
+  "status": "completed"
+}

@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-002",
+  "scenario": "nova_compute-stop",
+  "target_host": "10.197.76.24",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "nova_compute",
+    "actual_container": "nova_compute",
+    "target": "10.197.76.24",
+    "injection_time": "2026-04-21T11:02:15.108587",
+    "status": "success",
+    "command": "sudo podman stop nova_compute",
+    "verification": "stopped",
+    "stdout": "nova_compute\n",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "nova_compute",
+    "actual_container": "nova_compute",
+    "target": "10.197.76.24",
+    "recovery_time": "2026-04-21T11:03:25.521522",
+    "status": "success",
+    "verification": "running",
+    "stdout": "nova_compute\n",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-002/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-21T10:57:15.108534+00:00",
+      "end": "2026-04-21T11:08:25.521327+00:00"
+    },
+    "count": 3295
+  },
+  "validation": {
+    "signatures_expected": [
+      "nova-compute",
+      "stop",
+      "ERROR",
+      "down"
+    ],
+    "signatures_found": [
+      "nova-compute",
+      "stop",
+      "ERROR",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 3295,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 511532
+  },
+  "created_at": "2026-04-21T11:05:44.973950+00:00",
+  "status": "completed"
+}

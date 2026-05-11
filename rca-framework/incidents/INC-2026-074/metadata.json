@@ -1,0 +1,65 @@
+{
+  "incident_id": "INC-2026-074",
+  "scenario": "keystone-config",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 120,
+  "injection": {
+    "scenario": "config-corruption",
+    "service": "keystone",
+    "actual_container": "keystone",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-24T13:27:48.497026",
+    "status": "success",
+    "command": "echo '# RCA_FAULT_INJECTION_CORRUPT' | sudo tee -a /var/lib/config-data/puppet-generated/keystone/etc/keystone/keystone.conf >/dev/null && echo '[DEFAULT]' | sudo tee -a /var/lib/config-data/puppet-generated/keystone/etc/keystone/keystone.conf >/dev/null && echo 'invalid_parameter_for_rca_test = true' | sudo tee -a /var/lib/config-data/puppet-generated/keystone/etc/keystone/keystone.conf >/dev/null",
+    "restart_command": "sudo systemctl restart tripleo_keystone.service",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "config-corruption",
+    "service": "keystone",
+    "actual_container": "keystone",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-24T13:29:53.374822",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "/home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-074/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-24T13:25:48.496962+00:00",
+      "end": "2026-04-24T13:31:53.310446+00:00"
+    },
+    "count": 2218
+  },
+  "validation": {
+    "signatures_expected": [
+      "keystone",
+      "config",
+      "error",
+      "invalid"
+    ],
+    "signatures_found": [
+      "keystone",
+      "config",
+      "error"
+    ],
+    "match_rate": 0.75,
+    "log_count": 2218,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 803411
+  },
+  "created_at": "2026-04-24T13:32:19.535346+00:00",
+  "status": "completed"
+}

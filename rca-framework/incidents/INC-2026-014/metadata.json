@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-014",
+  "scenario": "ovn-metadata-agent-stop",
+  "target_host": "10.197.76.24",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "ovn-metadata-agent",
+    "actual_container": "ovn_metadata_agent",
+    "target": "10.197.76.24",
+    "injection_time": "2026-04-22T05:48:30.125208",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_ovn_metadata_agent.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "ovn-metadata-agent",
+    "actual_container": "ovn_metadata_agent",
+    "target": "10.197.76.24",
+    "recovery_time": "2026-04-22T05:49:35.261268",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-014/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T05:46:30.125028+00:00",
+      "end": "2026-04-22T05:51:35.261229+00:00"
+    },
+    "count": 2082
+  },
+  "validation": {
+    "signatures_expected": [
+      "ovn",
+      "metadata",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "ovn",
+      "metadata",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2082,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 722258
+  },
+  "created_at": "2026-04-22T05:51:49.656774+00:00",
+  "status": "completed"
+}

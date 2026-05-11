@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-052",
+  "scenario": "skyline-console-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "skyline-console",
+    "actual_container": "skyline-console",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T16:24:08.247627",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_skyline-console.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "skyline-console",
+    "actual_container": "skyline-console",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T16:25:13.301495",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "/home/biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-052/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T16:22:08.247585+00:00",
+      "end": "2026-04-22T16:27:13.301452+00:00"
+    },
+    "count": 2041
+  },
+  "validation": {
+    "signatures_expected": [
+      "skyline",
+      "console",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "skyline",
+      "console",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2041,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 243658
+  },
+  "created_at": "2026-04-22T16:27:24.206319+00:00",
+  "status": "completed"
+}

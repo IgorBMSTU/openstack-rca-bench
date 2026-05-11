@@ -1,0 +1,64 @@
+{
+  "incident_id": "INC-2026-053",
+  "scenario": "grafana-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "grafana",
+    "actual_container": "grafana",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T16:34:19.627343",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_grafana.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "grafana",
+    "actual_container": "grafana",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T16:35:24.587061",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "/home/biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-053/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T16:32:19.627298+00:00",
+      "end": "2026-04-22T16:37:24.586934+00:00"
+    },
+    "count": 2243
+  },
+  "validation": {
+    "signatures_expected": [
+      "grafana",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "grafana",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2243,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 282171
+  },
+  "created_at": "2026-04-22T16:37:33.401721+00:00",
+  "status": "completed"
+}

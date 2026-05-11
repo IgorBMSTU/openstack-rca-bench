@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-044",
+  "scenario": "skyline-apiserver-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "skyline-apiserver",
+    "actual_container": "skyline-apiserver",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T14:30:43.133903",
+    "status": "success",
+    "command": "sudo podman stop skyline-apiserver",
+    "verification": "stopped",
+    "stdout": "skyline-apiserver\n",
+    "stderr": "time=\"2026-04-22T17:30:54+03:00\" level=warning msg=\"StopSignal SIGTERM failed to stop container skyline-apiserver in 10 seconds, resorting to SIGKILL\"\n"
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "skyline-apiserver",
+    "actual_container": "skyline-apiserver",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T14:31:58.677138",
+    "status": "success",
+    "verification": "running",
+    "stdout": "skyline-apiserver\n",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-044/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T14:28:43.133860+00:00",
+      "end": "2026-04-22T14:33:58.677103+00:00"
+    },
+    "count": 2262
+  },
+  "validation": {
+    "signatures_expected": [
+      "skyline",
+      "apiserver",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "skyline",
+      "apiserver",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2262,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 865660
+  },
+  "created_at": "2026-04-22T14:34:11.498930+00:00",
+  "status": "completed"
+}

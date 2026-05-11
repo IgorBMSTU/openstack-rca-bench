@@ -1,0 +1,64 @@
+{
+  "incident_id": "INC-2026-027",
+  "scenario": "ceph-osd-2-stop",
+  "target_host": "10.197.76.41",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "ceph-osd-2",
+    "actual_container": "ceph-osd@2.service",
+    "target": "10.197.76.41",
+    "injection_time": "2026-04-22T10:32:09.402269",
+    "status": "success",
+    "command": "sudo ceph orch daemon stop osd.2",
+    "verification": "stopped",
+    "stdout": "Scheduled to stop osd.2 on host 'eng-101-astd-ceph-16-storage3.novalocal'\n",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "ceph-osd-2",
+    "actual_container": "ceph-osd@2.service",
+    "target": "10.197.76.41",
+    "recovery_time": "2026-04-22T10:33:24.599025",
+    "status": "success",
+    "verification": "running",
+    "stdout": "Scheduled to start osd.2 on host 'eng-101-astd-ceph-16-storage3.novalocal'\n",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-027/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T10:30:09.402225+00:00",
+      "end": "2026-04-22T10:35:24.598978+00:00"
+    },
+    "count": 2070
+  },
+  "validation": {
+    "signatures_expected": [
+      "ceph",
+      "osd",
+      "ERROR",
+      "down"
+    ],
+    "signatures_found": [
+      "ceph",
+      "down"
+    ],
+    "match_rate": 0.5,
+    "log_count": 2070,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 838369
+  },
+  "created_at": "2026-04-22T10:35:49.700997+00:00",
+  "status": "completed"
+}

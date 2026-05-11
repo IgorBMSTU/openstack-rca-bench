@@ -1,0 +1,72 @@
+{
+  "incident_id": "INC-2026-064",
+  "scenario": "ovn-metadata-agent-stop",
+  "target_host": "10.197.76.25",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "ovn-metadata-agent",
+    "actual_container": "ovn_metadata_agent",
+    "target": "10.197.76.25",
+    "injection_time": "2026-04-23T05:33:54.551403",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_ovn_metadata_agent.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "ovn-metadata-agent",
+    "actual_container": "ovn_metadata_agent",
+    "target": "10.197.76.25",
+    "recovery_time": "2026-04-23T05:34:59.762847",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "/home/biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-064/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-23T05:31:54.551359+00:00",
+      "end": "2026-04-23T05:36:59.762673+00:00"
+    },
+    "count": 2278
+  },
+  "validation": {
+    "signatures_expected": [
+      "ovn",
+      "metadata",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "ovn",
+      "metadata",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2278,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 996957
+  },
+  "created_at": "2026-04-23T05:37:44.999548+00:00",
+  "status": "completed",
+  "workload": {
+    "type": "vm_creation",
+    "vm_prefix": "rca-phase4-vm",
+    "vm_interval_seconds": 15,
+    "vms_created": 3
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "provider": "qwen",
+  "model": "qwen3-coder-30b-a3b",
+  "prompt_strategy": "zero_shot",
+  "limit": 64,
+  "total": 64
+}

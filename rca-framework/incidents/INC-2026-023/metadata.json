@@ -1,0 +1,64 @@
+{
+  "incident_id": "INC-2026-023",
+  "scenario": "redis-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "redis",
+    "actual_container": "redis-bundle-podman-0",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T07:57:55.855394",
+    "status": "success",
+    "command": "sudo pcs resource disable redis-bundle",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "redis",
+    "actual_container": "redis-bundle-podman-0",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T07:59:15.049303",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-023/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T07:55:55.855332+00:00",
+      "end": "2026-04-22T08:01:15.049204+00:00"
+    },
+    "count": 2737
+  },
+  "validation": {
+    "signatures_expected": [
+      "redis",
+      "ERROR",
+      "connection refused"
+    ],
+    "signatures_found": [
+      "redis",
+      "ERROR",
+      "connection refused"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2737,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 446579
+  },
+  "created_at": "2026-04-22T08:01:35.867965+00:00",
+  "status": "completed"
+}

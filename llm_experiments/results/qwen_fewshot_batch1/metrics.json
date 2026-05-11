@@ -1,0 +1,128 @@
+{
+  "top1_accuracy": 0.0,
+  "top1_fuzzy_accuracy": 0.0,
+  "host_accuracy": 0.0,
+  "category_accuracy": {
+    "api": 0.0,
+    "backend": 0.0,
+    "message_queue": 0.0
+  },
+  "mean_match_score": 0.0,
+  "per_incident": [
+    {
+      "incident_id": "INC-2026-015",
+      "predicted_service": "ovn-northd",
+      "true_service": "nova-api",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.21",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    },
+    {
+      "incident_id": "INC-2026-016",
+      "predicted_service": "nova-metadata",
+      "true_service": "glance-api",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.21",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    },
+    {
+      "incident_id": "INC-2026-017",
+      "predicted_service": "ovn-northd",
+      "true_service": "keystone",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.21",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    },
+    {
+      "incident_id": "INC-2026-018",
+      "predicted_service": "nova-scheduler",
+      "true_service": "heat-api",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.21",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    },
+    {
+      "incident_id": "INC-2026-019",
+      "predicted_service": "ovn-northd",
+      "true_service": "placement-api",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.21",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    },
+    {
+      "incident_id": "INC-2026-020",
+      "predicted_service": "nova-metadata",
+      "true_service": "nova-conductor",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.21",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    },
+    {
+      "incident_id": "INC-2026-021",
+      "predicted_service": "nova-metadata",
+      "true_service": "nova-scheduler",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.21",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    },
+    {
+      "incident_id": "INC-2026-022",
+      "predicted_service": "nova-scheduler",
+      "true_service": "nova-metadata",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.21",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    },
+    {
+      "incident_id": "INC-2026-023",
+      "predicted_service": "nova-scheduler",
+      "true_service": "redis",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.21",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    },
+    {
+      "incident_id": "INC-2026-024",
+      "predicted_service": "nova-scheduler",
+      "true_service": "nova_compute",
+      "predicted_host": "controller",
+      "true_host": "10.197.76.24",
+      "predicted_fault_type": "service-crash",
+      "correct_service": false,
+      "correct_host": false,
+      "match_score": 0.0
+    }
+  ],
+  "latency": {
+    "mean": 9.791539666801691,
+    "total": 97.91539666801691,
+    "count": 10
+  }
+}

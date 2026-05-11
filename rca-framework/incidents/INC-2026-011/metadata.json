@@ -1,0 +1,67 @@
+{
+  "incident_id": "INC-2026-011",
+  "scenario": "ovn-controller-stop",
+  "target_host": "10.197.76.24",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "ovn-controller",
+    "actual_container": "ovn_controller",
+    "target": "10.197.76.24",
+    "injection_time": "2026-04-21T14:29:51.475406",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_ovn_controller.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "ovn-controller",
+    "actual_container": "ovn_controller",
+    "target": "10.197.76.24",
+    "recovery_time": "2026-04-21T14:30:56.585464",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-011/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-21T14:27:51.475203+00:00",
+      "end": "2026-04-21T14:32:56.585276+00:00"
+    },
+    "count": 2056
+  },
+  "validation": {
+    "signatures_expected": [
+      "ovn",
+      "controller",
+      "ERROR",
+      "timeout",
+      "unreachable",
+      "down"
+    ],
+    "signatures_found": [
+      "ovn",
+      "controller",
+      "down"
+    ],
+    "match_rate": 0.5,
+    "log_count": 2056,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 553434
+  },
+  "created_at": "2026-04-21T14:33:13.659595+00:00",
+  "status": "completed"
+}

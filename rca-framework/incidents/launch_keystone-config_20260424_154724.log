@@ -1,0 +1,33 @@
+2026-04-24 15:47:24,221 - framework.injector.injector_v3_podman - INFO - FaultInjector initialized with base_dir: /home/biv/sync_biv/sync/article_dataset_1/rca-framework
+2026-04-24 15:47:24,221 - framework.injector.injector_v3_podman - INFO - FaultInjector initialized with base_dir: /home/biv/sync_biv/sync/article_dataset_1/rca-framework
+2026-04-24 15:47:24,222 - __main__ - INFO - Orchestrator ready. Base dir: /home/biv/sync_biv/sync/article_dataset_1/rca-framework
+2026-04-24 15:47:24,222 - __main__ - INFO - 
+============================================================
+[INCIDENT] INC-2026-073 | keystone-config on 10.197.76.21 for 120s
+============================================================
+2026-04-24 15:47:24,222 - __main__ - INFO - [PHASE 1/9] Pre-sanity checks...
+2026-04-24 15:47:24,222 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 15:47:24,222 - sanity_checks.sanity_checks - INFO - Running Comprehensive OpenStack Sanity Checks
+2026-04-24 15:47:24,222 - sanity_checks.sanity_checks - INFO - ============================================================
+2026-04-24 15:47:24,222 - sanity_checks.sanity_checks - INFO - Running Pacemaker cluster checks...
+2026-04-24 15:47:24,222 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status
+2026-04-24 15:47:27,901 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status resources
+2026-04-24 15:47:30,259 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status --full
+2026-04-24 15:47:32,950 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo pcs status nodes
+2026-04-24 15:47:35,121 - sanity_checks.sanity_checks - INFO - Running OpenStack API checks...
+2026-04-24 15:48:06,248 - sanity_checks.sanity_checks - INFO - Running container status checks...
+2026-04-24 15:48:06,249 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:08,032 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:09,374 - framework.realistic_runner - INFO - Executing on 10.197.76.21: sudo podman ps --format '{{.Names}}'
+2026-04-24 15:48:10,493 - framework.realistic_runner - INFO - Executing on 10.197.76.24: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:12,070 - framework.realistic_runner - INFO - Executing on 10.197.76.24: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:13,270 - framework.realistic_runner - INFO - Executing on 10.197.76.24: sudo podman ps --format '{{.Names}}'
+2026-04-24 15:48:14,382 - framework.realistic_runner - INFO - Executing on 10.197.76.25: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:15,885 - framework.realistic_runner - INFO - Executing on 10.197.76.25: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:16,901 - framework.realistic_runner - INFO - Executing on 10.197.76.25: sudo podman ps --format '{{.Names}}'
+2026-04-24 15:48:18,060 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:19,280 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:20,290 - framework.realistic_runner - INFO - Executing on 10.197.76.41: sudo podman ps --format '{{.Names}}'
+2026-04-24 15:48:21,418 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo podman ps -a --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:22,724 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo podman ps -a --filter 'status=exited' --format '{{.Names}}	{{.Status}}'
+2026-04-24 15:48:23,811 - framework.realistic_runner - INFO - Executing on 10.197.76.42: sudo podman ps --format '{{.Names}}'

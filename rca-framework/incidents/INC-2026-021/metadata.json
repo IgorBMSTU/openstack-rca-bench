@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-021",
+  "scenario": "nova-scheduler-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "nova-scheduler",
+    "actual_container": "nova_scheduler",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T07:20:06.367862",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_nova_scheduler.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "nova-scheduler",
+    "actual_container": "nova_scheduler",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T07:21:13.329128",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-021/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T07:18:06.367655+00:00",
+      "end": "2026-04-22T07:23:13.329083+00:00"
+    },
+    "count": 2168
+  },
+  "validation": {
+    "signatures_expected": [
+      "nova",
+      "scheduler",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "nova",
+      "scheduler",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2168,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 305969
+  },
+  "created_at": "2026-04-22T07:23:28.715576+00:00",
+  "status": "completed"
+}

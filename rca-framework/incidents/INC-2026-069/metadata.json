@@ -1,0 +1,64 @@
+{
+  "incident_id": "INC-2026-069",
+  "scenario": "mysql-crash",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 120,
+  "injection": {
+    "scenario": "process-kill",
+    "service": "mysql",
+    "actual_container": "galera-bundle-podman-0",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-24T12:16:04.424286",
+    "status": "success",
+    "command": "sudo podman kill --signal=KILL galera-bundle-podman-0",
+    "stdout": "galera-bundle-podman-0\n",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "mysql",
+    "actual_container": "galera-bundle-podman-0",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-24T12:18:05.860113",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "/home/biv/sync_biv/sync/article_dataset_1/rca-framework/incidents/INC-2026-069/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-24T12:14:04.424199+00:00",
+      "end": "2026-04-24T12:20:05.859899+00:00"
+    },
+    "count": 2450
+  },
+  "validation": {
+    "signatures_expected": [
+      "mysql",
+      "killed",
+      "shutdown",
+      "mariadb"
+    ],
+    "signatures_found": [
+      "mysql",
+      "shutdown",
+      "mariadb"
+    ],
+    "match_rate": 0.75,
+    "log_count": 2450,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 534978
+  },
+  "created_at": "2026-04-24T12:20:27.775692+00:00",
+  "status": "completed"
+}

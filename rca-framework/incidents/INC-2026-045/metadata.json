@@ -1,0 +1,64 @@
+{
+  "incident_id": "INC-2026-045",
+  "scenario": "iscsid-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "iscsid",
+    "actual_container": "iscsid",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T14:46:23.416760",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_iscsid.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "iscsid",
+    "actual_container": "iscsid",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T14:47:28.613521",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-045/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T14:44:23.416710+00:00",
+      "end": "2026-04-22T14:49:28.613353+00:00"
+    },
+    "count": 2451
+  },
+  "validation": {
+    "signatures_expected": [
+      "iscsid",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "iscsid",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2451,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 924819
+  },
+  "created_at": "2026-04-22T14:49:39.598872+00:00",
+  "status": "completed"
+}

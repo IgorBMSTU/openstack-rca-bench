@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-039",
+  "scenario": "cinder-scheduler-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "cinder-scheduler",
+    "actual_container": "cinder_scheduler",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T13:36:23.330802",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_cinder_scheduler.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "cinder-scheduler",
+    "actual_container": "cinder_scheduler",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T13:37:32.322546",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-039/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T13:34:23.330748+00:00",
+      "end": "2026-04-22T13:39:32.322501+00:00"
+    },
+    "count": 2085
+  },
+  "validation": {
+    "signatures_expected": [
+      "cinder",
+      "scheduler",
+      "stop",
+      "down"
+    ],
+    "signatures_found": [
+      "cinder",
+      "scheduler",
+      "stop",
+      "down"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2085,
+    "has_errors": false
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 662010
+  },
+  "created_at": "2026-04-22T13:39:44.280626+00:00",
+  "status": "completed"
+}

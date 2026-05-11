@@ -1,0 +1,66 @@
+{
+  "incident_id": "INC-2026-015",
+  "scenario": "nova-api-stop",
+  "target_host": "10.197.76.21",
+  "duration_seconds": 60,
+  "injection": {
+    "scenario": "service-stop",
+    "service": "nova-api",
+    "actual_container": "nova_api",
+    "target": "10.197.76.21",
+    "injection_time": "2026-04-22T05:58:59.250131",
+    "status": "success",
+    "command": "sudo systemctl stop tripleo_nova_api.service",
+    "verification": "stopped",
+    "stdout": "",
+    "stderr": ""
+  },
+  "recovery": {
+    "scenario": "service-stop",
+    "service": "nova-api",
+    "actual_container": "nova_api",
+    "target": "10.197.76.21",
+    "recovery_time": "2026-04-22T06:00:05.440837",
+    "status": "success",
+    "verification": "running",
+    "stdout": "",
+    "stderr": ""
+  },
+  "data": {
+    "raw_log_file": "rca-framework/incidents/INC-2026-015/raw_logs.json.gz",
+    "loki_query": "{job=\"systemd-journal\"}",
+    "time_window": {
+      "start": "2026-04-22T05:56:59.249972+00:00",
+      "end": "2026-04-22T06:02:05.440799+00:00"
+    },
+    "count": 2222
+  },
+  "validation": {
+    "signatures_expected": [
+      "nova",
+      "api",
+      "stop",
+      "503"
+    ],
+    "signatures_found": [
+      "nova",
+      "api",
+      "stop",
+      "503"
+    ],
+    "match_rate": 1.0,
+    "log_count": 2222,
+    "has_errors": true
+  },
+  "sanity": {
+    "pre_check_passed": true,
+    "post_check_passed": true,
+    "recovery_time_seconds": null
+  },
+  "safety": {
+    "watchdog_installed": true,
+    "watchdog_pid": 6960
+  },
+  "created_at": "2026-04-22T06:02:20.365850+00:00",
+  "status": "completed"
+}

@@ -1,0 +1,14 @@
+{
+  "provider": "qwen",
+  "model": "qwen3-coder-30b-a3b",
+  "prompt_strategy": "chain_of_thought",
+  "log_strategy": "hybrid",
+  "max_log_chars": 60000,
+  "limit": 10,
+  "resume": false,
+  "experiment_name": "qwen_cot_batch1",
+  "offset": 20,
+  "incidents_dir": "../rca-framework/incidents",
+  "dry_run": false,
+  "timestamp": "2026-05-08T12:56:24.937916+00:00"
+}

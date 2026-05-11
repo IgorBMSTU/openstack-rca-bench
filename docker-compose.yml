@@ -1,0 +1,19 @@
+
+services:
+  openstack-rca-bench:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: openstack-rca-bench
+    volumes:
+      - ./llm_experiments/results:/app/llm_experiments/results
+      - ./rca-framework/incidents:/app/rca-framework/incidents
+    environment:
+      # Required: set QWEN_API_KEY (in .env or shell) for demo runs
+      - QWEN_API_KEY=${QWEN_API_KEY:?Set QWEN_API_KEY in .env or use `export QWEN_API_KEY=sk-...`}
+      - QWEN_BASE_URL=${QWEN_BASE_URL:-<your-endpoint>/v1}
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY:-}
+      - DEEPSEEK_BASE_URL=${DEEPSEEK_BASE_URL:-https://api.deepseek.com/v1}
+    ports:
+      - "8080:8080"
+    command: python -m llm_experiments.src.run_experiment --provider qwen --model qwen3-coder-30b-a3b --prompt-strategy multi_agent --limit 2
