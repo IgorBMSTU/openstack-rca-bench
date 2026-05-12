@@ -59,12 +59,12 @@ CATEGORIES_ORDER = ["Ctrl-backend", "OVN-network", "Ctrl-API", "Pacemaker",
 
 # Paper reference
 PAPER = {
-    "Ctrl-backend":     (15, 100, 100, 100),
-    "OVN-network":      (10, 100, 100, 100),
-    "Ctrl-API":          (8, 100,  79,  89),
-    "Pacemaker":         (4, 100,  58,  75),
-    "Compute":          (14, 100,  61,  76),
-    "Storage":           (5, 100,  56,  70),
+    "Ctrl-backend":     (17, 100, 100, 100),
+    "OVN-network":      (11, 100,  91,  95),
+    "Ctrl-API":          (8, 100,  89,  94),
+    "Pacemaker":         (4, 100,  75,  86),
+    "Compute":          (11, 100,  78,  88),
+    "Storage":           (5, 100,  70,  82),
     "Extended (Ph.5)":   (8, 100,  72,  84),
 }
 
@@ -160,7 +160,7 @@ def main():
     for cat in CATEGORIES_ORDER:
         n, p, r, f1 = PAPER[cat]
         print(f"{cat:<18} {n:>3}  {p:>5.0f}%  {r:>5.0f}%  {f1:>5.0f}%")
-    print(f"{'Overall':<18} {64:>3}  {100:>5.0f}%  {76:>5.0f}%  {87:>5.0f}%")
+    print(f"{'Overall':<18} {64:>3}  {100:>5.0f}%  {86:>5.0f}%  {92:>5.0f}%")
     print()
 
     # ── V2 comparison ──

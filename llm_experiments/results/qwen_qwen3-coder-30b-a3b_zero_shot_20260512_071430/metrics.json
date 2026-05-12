@@ -1,0 +1,13 @@
+{
+  "top1_accuracy": 0.0,
+  "top1_fuzzy_accuracy": 0.0,
+  "host_accuracy": 0.0,
+  "category_accuracy": {},
+  "mean_match_score": 0.0,
+  "per_incident": [],
+  "latency": {
+    "mean": 0.0,
+    "total": 0,
+    "count": 0
+  }
+}
