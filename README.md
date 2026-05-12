@@ -11,7 +11,7 @@ An open dataset of 64 chaos-engineering incidents for benchmarking RCA methods i
 
 Dataset is already in the repo (64 incidents). No cluster needed.
 
-### Quick Demo with Docker (API key required)
+### Quick Demo with Docker
 
 ```bash
 git clone https://github.com/IgorBMSTU/openstack-rca-bench
@@ -22,7 +22,7 @@ docker compose up
 
 Builds environment, validates dataset integrity, runs multi-agent RCA on 2 sample incidents.  
 **Expected output:** `ALL CHECKS PASSED` with predictions for 2 incidents (exit 0).
-**API key:** Set `QWEN_API_KEY` (any non-empty value) and `QWEN_BASE_URL` to point to your model endpoint (e.g. `http://your-server:8000/v1`). For DeepSeek, use `DEEPSEEK_API_KEY` instead — see below.
+**API key:** Required for cloud providers (DeepSeek). For local models (Ollama/vLLM), set `QWEN_API_KEY` to any non-empty value and point `QWEN_BASE_URL` to your endpoint.
 
 ---
 
@@ -40,7 +40,7 @@ python3 -m llm_experiments.src.run_experiment \
   --prompt-strategy multi_agent \
   --log-strategy hybrid
 ```
-**API keys:** Local model — set `QWEN_API_KEY` (any value) and `QWEN_BASE_URL` to your endpoint (e.g. `http://localhost:8000/v1` for Ollama/vLLM). For DeepSeek Cloud, set `DEEPSEEK_API_KEY` from [DeepSeek Platform](https://platform.deepseek.com/).
+**API keys:** Required for cloud providers (DeepSeek). For local models (Ollama/vLLM), set `QWEN_API_KEY` to any non-empty value and point `QWEN_BASE_URL` to your endpoint.
 
 **Output:** `llm_experiments/results/<name>/predictions.jsonl`  
 **To reproduce paper (78.12%):** use `--prompt-strategy multi_agent` with Qwen or DeepSeek.
@@ -69,6 +69,13 @@ Injects fault, collects logs, runs sanity pre/post.
 | **Multi-agent** | DeepSeek | deepseek-v4-flash | 64 | **78.12%** |
 
 **Key insight:** Both models converge on the same 50 correct predictions out of 64. The bottleneck shifts from LLM reasoning to dependency graph completeness. Detailed aggregation analysis reveals a Reliability Paradox: agreement among agents is not a proxy for correctness, collapsing to 14.3% on consensus.
+### Reproducing the Rule-Based Baseline (Table 3)
+
+```bash
+python3 framework/baselines/evaluate_table3.py rca-framework/incidents
+```
+
+Runs regex-based signature matching across all 64 incidents, producing the Table 3 results (fault-type and per-service accuracy). Faster and cheaper than LLM evaluation — good starting point for comparison.
 
 ## Dataset Overview
 
@@ -85,7 +92,7 @@ openstack-rca-bench/
 <summary><b>Directory Structure</b></summary>
 
 ```
-openstack-rca-dataset/
+openstack-rca-bench/
 ├── rca-framework/incidents/   # 64 incident directories (metadata + logs)
 ├── framework/                 # Fault injection framework (injector, collectors)
 ├── orchestrator/              # End-to-end incident orchestration
