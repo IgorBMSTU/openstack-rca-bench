@@ -1,17 +1,17 @@
 {
-  "top1_accuracy": 0.25,
-  "top1_fuzzy_accuracy": 0.25,
+  "top1_accuracy": 0.015625,
+  "top1_fuzzy_accuracy": 0.015625,
   "host_accuracy": 1.0,
   "category_accuracy": {
-    "backend": 0.15789473684210525,
-    "network": 0.2222222222222222,
-    "api": 0.4,
-    "message_queue": 0.6666666666666666,
-    "storage": 0.4,
+    "backend": 0.0,
+    "network": 0.0,
+    "api": 0.0,
+    "message_queue": 0.3333333333333333,
+    "storage": 0.0,
     "database": 0.0,
-    "other": 0.14285714285714285
+    "other": 0.0
   },
-  "mean_match_score": 0.625,
+  "mean_match_score": 0.5078125,
   "per_incident": [
     {
       "incident_id": "INC-2026-002",
@@ -37,7 +37,7 @@
     },
     {
       "incident_id": "INC-2026-006",
-      "predicted_service": "none",
+      "predicted_service": "rabbitmq",
       "true_service": "nova_compute",
       "predicted_host": "",
       "true_host": "10.197.76.24",
@@ -48,7 +48,7 @@
     },
     {
       "incident_id": "INC-2026-007",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "neutron-api",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -59,7 +59,7 @@
     },
     {
       "incident_id": "INC-2026-009",
-      "predicted_service": "none",
+      "predicted_service": "unknown",
       "true_service": "ovn-controller",
       "predicted_host": "",
       "true_host": "10.197.76.24",
@@ -70,18 +70,18 @@
     },
     {
       "incident_id": "INC-2026-010",
-      "predicted_service": "ovn-controller",
+      "predicted_service": "none_found",
       "true_service": "ovn-controller",
       "predicted_host": "",
       "true_host": "10.197.76.25",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-011",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "ovn-controller",
       "predicted_host": "",
       "true_host": "10.197.76.24",
@@ -92,7 +92,7 @@
     },
     {
       "incident_id": "INC-2026-012",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "cinder-api",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -103,14 +103,14 @@
     },
     {
       "incident_id": "INC-2026-013",
-      "predicted_service": "nova_compute",
+      "predicted_service": "none_found",
       "true_service": "nova_compute",
       "predicted_host": "",
       "true_host": "10.197.76.25",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-014",
@@ -136,7 +136,7 @@
     },
     {
       "incident_id": "INC-2026-016",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "glance-api",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -147,14 +147,14 @@
     },
     {
       "incident_id": "INC-2026-017",
-      "predicted_service": "keystone",
+      "predicted_service": "rabbitmq",
       "true_service": "keystone",
       "predicted_host": "",
       "true_host": "10.197.76.21",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-018",
@@ -169,29 +169,29 @@
     },
     {
       "incident_id": "INC-2026-019",
-      "predicted_service": "placement-api",
+      "predicted_service": "none_found",
       "true_service": "placement-api",
       "predicted_host": "",
       "true_host": "10.197.76.21",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-020",
-      "predicted_service": "nova-conductor",
+      "predicted_service": "none_found",
       "true_service": "nova-conductor",
       "predicted_host": "",
       "true_host": "10.197.76.21",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-021",
-      "predicted_service": "none",
+      "predicted_service": "rabbitmq",
       "true_service": "nova-scheduler",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -202,7 +202,7 @@
     },
     {
       "incident_id": "INC-2026-022",
-      "predicted_service": "none",
+      "predicted_service": "unknown",
       "true_service": "nova-metadata",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -224,7 +224,7 @@
     },
     {
       "incident_id": "INC-2026-024",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "nova_compute",
       "predicted_host": "",
       "true_host": "10.197.76.24",
@@ -235,29 +235,29 @@
     },
     {
       "incident_id": "INC-2026-025",
-      "predicted_service": "ceph-osd-0",
+      "predicted_service": "none_found",
       "true_service": "ceph-osd-0",
       "predicted_host": "",
       "true_host": "10.197.76.41",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-026",
-      "predicted_service": "ceph-osd-1",
+      "predicted_service": "none_found",
       "true_service": "ceph-osd-1",
       "predicted_host": "",
       "true_host": "10.197.76.41",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-027",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "ceph-osd-2",
       "predicted_host": "",
       "true_host": "10.197.76.41",
@@ -279,7 +279,7 @@
     },
     {
       "incident_id": "INC-2026-030",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "ceph-mgr",
       "predicted_host": "",
       "true_host": "10.197.76.41",
@@ -301,7 +301,7 @@
     },
     {
       "incident_id": "INC-2026-032",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "mysql",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -312,7 +312,7 @@
     },
     {
       "incident_id": "INC-2026-033",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "heat-engine",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -323,7 +323,7 @@
     },
     {
       "incident_id": "INC-2026-034",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "heat-api-cfn",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -334,7 +334,7 @@
     },
     {
       "incident_id": "INC-2026-036",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "nova-vnc-proxy",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -345,18 +345,18 @@
     },
     {
       "incident_id": "INC-2026-037",
-      "predicted_service": "ovn-metadata-agent",
+      "predicted_service": "none_found",
       "true_service": "ovn-metadata-agent",
       "predicted_host": "",
       "true_host": "10.197.76.25",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-038",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "neutron-dhcp",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -367,7 +367,7 @@
     },
     {
       "incident_id": "INC-2026-039",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "cinder-scheduler",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -378,7 +378,7 @@
     },
     {
       "incident_id": "INC-2026-040",
-      "predicted_service": "none",
+      "predicted_service": "unknown",
       "true_service": "haproxy",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -400,7 +400,7 @@
     },
     {
       "incident_id": "INC-2026-042",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "ovn-controller",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -411,29 +411,29 @@
     },
     {
       "incident_id": "INC-2026-043",
-      "predicted_service": "glance-api-internal",
+      "predicted_service": "none_found",
       "true_service": "glance-api-internal",
       "predicted_host": "",
       "true_host": "10.197.76.21",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-044",
-      "predicted_service": "skyline-apiserver",
+      "predicted_service": "none_found",
       "true_service": "skyline-apiserver",
       "predicted_host": "",
       "true_host": "10.197.76.21",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-045",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "iscsid",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -444,7 +444,7 @@
     },
     {
       "incident_id": "INC-2026-046",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "nova-compute",
       "predicted_host": "",
       "true_host": "10.197.76.25",
@@ -455,18 +455,18 @@
     },
     {
       "incident_id": "INC-2026-047",
-      "predicted_service": "ovn-metadata-agent",
+      "predicted_service": "none_found",
       "true_service": "ovn-metadata-agent",
       "predicted_host": "",
       "true_host": "10.197.76.24",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-049",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "ovn-northd",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -488,7 +488,7 @@
     },
     {
       "incident_id": "INC-2026-051",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "ovn-south-db",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -499,7 +499,7 @@
     },
     {
       "incident_id": "INC-2026-052",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "skyline-console",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -510,7 +510,7 @@
     },
     {
       "incident_id": "INC-2026-053",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "grafana",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -521,7 +521,7 @@
     },
     {
       "incident_id": "INC-2026-054",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "prometheus",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -532,7 +532,7 @@
     },
     {
       "incident_id": "INC-2026-055",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "ovn-controller",
       "predicted_host": "",
       "true_host": "10.197.76.24",
@@ -543,7 +543,7 @@
     },
     {
       "incident_id": "INC-2026-056",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "nova-compute",
       "predicted_host": "",
       "true_host": "10.197.76.24",
@@ -554,7 +554,7 @@
     },
     {
       "incident_id": "INC-2026-057",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "iscsid",
       "predicted_host": "",
       "true_host": "10.197.76.24",
@@ -565,7 +565,7 @@
     },
     {
       "incident_id": "INC-2026-059",
-      "predicted_service": "none",
+      "predicted_service": "unknown",
       "true_service": "nova-compute",
       "predicted_host": "",
       "true_host": "10.197.76.24",
@@ -576,7 +576,7 @@
     },
     {
       "incident_id": "INC-2026-060",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "ovn-controller",
       "predicted_host": "",
       "true_host": "10.197.76.24",
@@ -598,7 +598,7 @@
     },
     {
       "incident_id": "INC-2026-062",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "nova-compute",
       "predicted_host": "",
       "true_host": "10.197.76.25",
@@ -609,18 +609,18 @@
     },
     {
       "incident_id": "INC-2026-063",
-      "predicted_service": "ovn-controller",
+      "predicted_service": "none_found",
       "true_service": "ovn-controller",
       "predicted_host": "",
       "true_host": "10.197.76.25",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-064",
-      "predicted_service": "none",
+      "predicted_service": "unknown",
       "true_service": "ovn-metadata-agent",
       "predicted_host": "",
       "true_host": "10.197.76.25",
@@ -631,7 +631,7 @@
     },
     {
       "incident_id": "INC-2026-065",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "keystone",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -642,18 +642,18 @@
     },
     {
       "incident_id": "INC-2026-066",
-      "predicted_service": "nova-api",
+      "predicted_service": "none_found",
       "true_service": "nova-api",
       "predicted_host": "",
       "true_host": "10.197.76.21",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-067",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "neutron-api",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -664,7 +664,7 @@
     },
     {
       "incident_id": "INC-2026-068",
-      "predicted_service": "none",
+      "predicted_service": "none_found",
       "true_service": "glance-api",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -686,18 +686,18 @@
     },
     {
       "incident_id": "INC-2026-070",
-      "predicted_service": "rabbitmq",
+      "predicted_service": "galera",
       "true_service": "rabbitmq",
       "predicted_host": "",
       "true_host": "10.197.76.21",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     },
     {
       "incident_id": "INC-2026-074",
-      "predicted_service": "rabbitmq",
+      "predicted_service": "galera",
       "true_service": "keystone",
       "predicted_host": "",
       "true_host": "10.197.76.21",
@@ -708,19 +708,19 @@
     },
     {
       "incident_id": "INC-2026-075",
-      "predicted_service": "nova-api",
+      "predicted_service": "galera",
       "true_service": "nova-api",
       "predicted_host": "",
       "true_host": "10.197.76.21",
       "predicted_fault_type": "",
-      "correct_service": true,
+      "correct_service": false,
       "correct_host": true,
-      "match_score": 1.0
+      "match_score": 0.5
     }
   ],
   "latency": {
-    "mean": 21.13501565745287,
-    "total": 1352.6410020769836,
+    "mean": 3.1492375149209693,
+    "total": 201.55120095494203,
     "count": 64
   }
 }

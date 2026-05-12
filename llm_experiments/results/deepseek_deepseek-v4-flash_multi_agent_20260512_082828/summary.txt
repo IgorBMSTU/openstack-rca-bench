@@ -1,0 +1,20 @@
+============================================================
+Experiment Summary
+============================================================
+Total incidents processed: 64
+Top-1 accuracy (exact):   0.0312
+Top-1 accuracy (fuzzy):   0.0312
+Host accuracy:            1.0000
+Mean match score:         0.5156
+
+Per-category accuracy:
+  api: 0.0000
+  backend: 0.0000
+  database: 0.0000
+  message_queue: 0.6667
+  network: 0.0000
+  other: 0.0000
+  storage: 0.0000
+
+Latency — mean: 21.42s, total: 1370.80s
+============================================================

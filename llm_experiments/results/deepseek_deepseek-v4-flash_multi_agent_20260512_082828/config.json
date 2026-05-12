@@ -4,11 +4,11 @@
   "prompt_strategy": "multi_agent",
   "log_strategy": "hybrid",
   "max_log_chars": 60000,
-  "limit": 64,
+  "limit": null,
   "resume": false,
-  "experiment_name": "deepseek_multi_agent_fixed",
+  "experiment_name": null,
   "offset": 0,
-  "incidents_dir": "../rca-framework/incidents",
+  "incidents_dir": "/Users/ivb/Documents/projects/submit_2026/openstack-rca-bench/rca-framework/incidents",
   "dry_run": false,
-  "timestamp": "2026-05-08T16:53:41.101511+00:00"
+  "timestamp": "2026-05-12T08:28:28.893437+00:00"
 }

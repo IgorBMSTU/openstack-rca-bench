@@ -3,9 +3,10 @@ A Reproducible IaaS Root Cause Analysis Dataset for OpenStack Environments
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg) ![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg) ![ASE 2026 Dataset](https://img.shields.io/badge/ASE-2026_Dataset-orange)
 
-An open dataset of 64 chaos-engineering incidents for benchmarking RCA methods in OpenStack IaaS, featuring multi-agent LLM reasoning traces and consensus-failure analysis.
+An open dataset of 64 chaos-engineering incidents for benchmarking RCA methods in OpenStack IaaS, including LLM reasoning traces.
 
 **Version:** 1.0.0 | **Incidents:** 64 | **Scenarios:** 46 | **Log Entries:** ~145,000
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20132156.svg)](https://doi.org/10.5281/zenodo.20132156)
 
 ## Quick Start
 
@@ -20,7 +21,7 @@ export QWEN_API_KEY="sk-..."
 docker compose up
 ```
 
-Builds environment, validates dataset integrity, runs multi-agent RCA on 2 sample incidents.  
+Builds environment, validates dataset integrity, runs sample pipeline on 2 incidents.
 **Expected output:** `ALL CHECKS PASSED` with predictions for 2 incidents (exit 0).
 **API key:** Required for cloud providers (DeepSeek). For local models (Ollama/vLLM), set `QWEN_API_KEY` to any non-empty value and point `QWEN_BASE_URL` to your endpoint.
 
@@ -43,7 +44,6 @@ python3 -m llm_experiments.src.run_experiment \
 **API keys:** Required for cloud providers (DeepSeek). For local models (Ollama/vLLM), set `QWEN_API_KEY` to any non-empty value and point `QWEN_BASE_URL` to your endpoint.
 
 **Output:** `llm_experiments/results/<name>/predictions.jsonl`  
-**To reproduce paper (78.12%):** use `--prompt-strategy multi_agent` with Qwen or DeepSeek.
 
 ---
 
@@ -65,12 +65,10 @@ Injects fault, collects logs, runs sanity pre/post.
 | :--- | :--- | :--- | :--- | :--- |
 | Zero-shot | Qwen | qwen3-coder-30b-a3b | 64 | **15.6%** |
 | Zero-shot | DeepSeek | deepseek-v4-flash | 64 | **10.9%** |
-| **Multi-agent** | Qwen | qwen3-coder-30b-a3b | 64 | **78.12%** |
-| **Multi-agent** | DeepSeek | deepseek-v4-flash | 64 | **78.12%** |
+| Multi-agent$^\dagger$ | Qwen | qwen3-coder-30b-a3b | 64 | **1.6%** |
+| Multi-agent$^\dagger$ | DeepSeek | deepseek-v4-flash | 64 | **3.1%** |
 
-**Key insight:** Both models converge on the same 50 correct predictions out of 64. The bottleneck shifts from LLM reasoning to dependency graph completeness. Detailed aggregation analysis reveals a Reliability Paradox: agreement among agents is not a proxy for correctness, collapsing to 14.3% on consensus.
 ### Reproducing the Rule-Based Baseline (Table 3)
-
 ```bash
 python3 framework/baselines/evaluate_table3.py rca-framework/incidents
 ```
@@ -243,12 +241,12 @@ The dataset was collected on a 7-node OpenStack Wallaby cluster:
 ## Citation
 
 ```bibtex
-@inproceedings{openstackrca2026,
+@misc{openstackrca2026,
   title={OpenStack-RCA-Bench: A Reproducible IaaS Root Cause Analysis Dataset},
   author={Igor Bogomolov and Oleg Borisenko},
-  booktitle={ASE 2026 — Tools and Datasets Track},
-  year={2026}
-}
+  note={ASE 2026 -- Tools and Datasets Track},
+  doi = {10.5281/zenodo.20132156},
+  howpublished = {\url{https://doi.org/10.5281/zenodo.20132156}}
 ```
 
 ## License

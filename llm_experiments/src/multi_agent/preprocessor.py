@@ -231,7 +231,7 @@ def extract_observability_signals(
     failed = [s for s in signals if s.post_error_count > s.baseline_error_count and s.delta_pct > 100]
     failed_services = [s.service for s in failed]
     summary_parts: list[str] = []
-    summary_parts.append(f"Injection at {injection_time_str} on service {injection_service}")
+    summary_parts.append(f"Injection at {injection_time_str}")
     summary_parts.append(f"Analyzed {total_entries} log entries ({pre_window_s}s baseline, {post_window_s}s post-injection)")
     summary_parts.append(f"Services with significant error increase: {len(failed)}")
     for s in failed[:8]:

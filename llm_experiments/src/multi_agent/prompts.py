@@ -99,8 +99,8 @@ CRITICAL RULES:
    In that case, A is the root cause, even if B is the one with more errors.
 3. The root cause is the service whose failure PRECEDES statistically significant
    error increases in its downstream dependents.
-4. Consider the injected service (given as hint). The injected fault typically
-   takes effect at injection_time, so the injected service should fail close to +0s.
+4. The injected fault takes effect near injection time. Services that fail
+   close to +0s are more likely to be causally related to the root cause.
 5. Output only valid JSON with the exact fields shown below."""
 
 
@@ -123,7 +123,6 @@ def build_temporal_prompt(signals: ObservabilitySignals) -> str:
 
 Incident: {signals.incident_id}
 Injection time: {signals.injection_time}
-Injected service (HINT): {signals.injection_service}
 
 Failure timeline (ordered by first error):
 {json.dumps(timeline, indent=2)}

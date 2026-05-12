@@ -1,0 +1,313 @@
+\documentclass[sigconf,review]{acmart}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{microtype}
+\settopmatter{printfolios=true,printacmref=false}
+
+\copyrightyear{2026}
+\acmYear{2026}
+\setcopyright{none}
+\acmConference[ASE 2026 Tools and Datasets]{41st IEEE/ACM International Conference on Automated Software Engineering}{October 12--16, 2026}{Munich, Germany}
+\acmBooktitle{41st IEEE/ACM International Conference on Automated Software Engineering (ASE 2026 Tools and Datasets), October 12--16, 2026, Munich, Germany}
+\received{May 2026}
+\acmDOI{10.5281/zenodo.20132156}
+\acmISBN{}
+
+\begin{document}
+
+\title{OpenStack-RCA-Bench: A Reproducible IaaS Root Cause Analysis Dataset}
+
+\author{Igor Bogomolov}
+\affiliation{
+  \institution{ISPRAS}
+  \city{Moscow}
+  \country{Russia}
+}
+\email{bogomolov@ispras.ru}
+
+\author{Oleg Borisenko}
+\affiliation{
+  \institution{System Solutions LLC}
+  \city{Moscow}
+  \country{Russia}
+}
+\email{al@somestuff.ru}
+
+\begin{abstract}
+We present \textbf{OpenStack-RCA-Bench}, an open dataset of 64 chaos-engineering incidents for benchmarking RCA methods in OpenStack IaaS. It features a 9-phase pipeline integrating four fault injection methods (service stop, port block, process kill, config corruption), automated log collection via Loki, and ground truth defined by programmatic injection metadata. The benchmark comprises 64 validated incidents across 37 services and 46 fault scenarios spanning controller, compute, network, storage, and critical infrastructure---totalling 145{,}133 log lines (8.4\,MB). A rule-based baseline achieves 92\% F1 overall, with 100\% on controller-backend and OVN-network categories and 84\% on extended fault types. We additionally evaluate state-of-the-art LLMs using zero-shot prompting: Top-1 accuracy reaches 10--16\% across models, highlighting the difficulty of log-based RCA. The benchmark and framework are publicly available. The artifact ships as a Docker Compose setup enabling one-click deployment and dry-run validation without external dependencies.
+
+\textit{Screencast:} \url{https://youtu.be/XXXXXXXXXXX}
+
+\textit{Code \& Dataset:} \url{https://github.com/IgorBMSTU/openstack-rca-bench}
+\end{abstract}
+
+\ccsdesc[500]{Software and its engineering~Software reliability}
+\ccsdesc[300]{Computer systems organization~Cloud computing}
+\ccsdesc[300]{Computing methodologies~Machine learning}
+
+\keywords{Root Cause Analysis, OpenStack, IaaS, Dataset, AIOps, Fault Injection, TripleO}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:introduction}
+
+Private cloud infrastructure powered by OpenStack supports critical services in research, enterprise, and government. Despite high-availability designs, failures occur from bugs, hardware issues, and configuration errors, making rapid RCA essential to minimize downtime. Recent advances in AIOps and LLMs promise automated RCA, but evaluating such approaches requires representative benchmarks with known ground truth.
+
+{\sloppy Existing public datasets focus on Kubernetes (e.g., ChaosEater~\cite{chaoseater}, AIOpsLab~\cite{aiopslab}) or provide raw logs without RCA annotations (e.g., Loghub~\cite{loghub}), leaving a gap for IaaS-level incidents involving storage subsystems and Open\-Stack\-spe\-cif\-ic failure modes. While several works target anomaly detection in Open\-Stack~\cite{cotroneo,nedelkoski}\allowbreak\cite{kalaki,rajkarnikar}, none release labeled evaluation benchmarks with validated ground truth and full reproducibility artifacts.}
+
+OpenStack-RCA-Bench fills this gap as an \textit{evaluation benchmark}: while 64 incidents are insufficient to train large models from scratch, they provide a dense, diverse, and reproducible testbed for assessing the causal reasoning capabilities of LLM-based agents, anomaly detectors, and rule-based systems under realistic IaaS noise and cascade failures. Our contributions are: (1)~OpenStack-specific incidents on a real 7-node TripleO cluster covering compute, network, controller, and storage services; (2)~programmatic ground truth via injection metadata, separated from validation gates to avoid circular evaluation; (3)~a reproducible 9-phase orchestrator with automatic watchdog recovery, Loki-based log export, and per-incident metadata; and (4)~64 validated incidents spanning 37 services across 46 fault scenarios with four fault types across five phases, together with documented engineering lessons.
+
+\textbf{Intended users.} AIOps researchers evaluating LLM-based RCA, anomaly detection practitioners needing labeled IaaS logs, and OpenStack operators benchmarking monitoring tools.
+
+\section{Related Work}
+\label{sec:related}
+
+Table~\ref{tab:comparison} compares OpenStack-RCA-Bench with the closest competing benchmarks and datasets. Kubernetes-centric datasets such as ChaosEater~\cite{chaoseater} and AIOpsLab~\cite{aiopslab} offer multimodal data at larger scale but do not cover IaaS-specific failure modes like Ceph storage degradation, OVN control-plane outages, or Pacemaker bundle failures. CloudRCA~\cite{cloudrca} and Cloud-OpsBench~\cite{cloudopsbench} target public cloud incidents but use closed data. Loghub~\cite{loghub} contains raw OpenStack logs but lacks ground truth RCA annotations. LEMMA-RCA~\cite{lemmarca} and RCAEval~\cite{rcaeval} focus on Kubernetes rather than IaaS control-plane failures. Prior OpenStack studies~\cite{cotroneo,nedelkoski,kalaki,rajkarnikar} demonstrate anomaly detection and fault injection but do not release labeled incident datasets with validated ground truth. Our work is the first to combine OpenStack-specific faults with programmatic ground truth, rule-based evaluation baselines, and full reproducibility artifacts.
+
+\begin{table}[ht]
+\centering
+\footnotesize
+\caption{Comparison with Existing RCA Datasets and Benchmarks}
+\label{tab:comparison}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{Dataset} & \textbf{Env} & \textbf{{\#}Inc} & \textbf{Data} & \textbf{GT} & \textbf{Open} & \textbf{Eval} \\
+\midrule
+ChaosEater & K8s & 100+ & L+M+T & LLM & \checkmark & LLM \\
+AIOpsLab & K8s & 79 & L+M+T & Trace & \checkmark & Agent \\
+CloudRCA & Cloud & 51 & M+Alert & Manual & -- & Cases \\
+Loghub & Mixed & -- & Logs & None & \checkmark & Parse \\
+Cotroneo & OS & 911 & Logs & Manual & \checkmark & Class \\
+Nedelkoski & OS & 3 & Trace & Manual & \checkmark & Anom \\
+Kalaki & OS & N/A & Logs & None & N/A & Anom \\
+Rajkarnikar & OS & N/A & Logs & None & N/A & Anom \\
+\textbf{This work} & \textbf{OS} & \textbf{64} & \textbf{Logs} & \textbf{Inj} & \checkmark & \textbf{F1} \\
+\bottomrule
+\end{tabular}
+\parbox{\linewidth}{\footnotesize Data: L=Logs, M=Metrics, T=Traces, Alert=alert streams. GT: Inj=injection metadata, LLM=LLM-generated, Trace=distributed tracing, Manual=human annotation. Eval: evaluation metric.}
+\end{table}
+
+\section{Dataset Construction}
+\label{sec:dataset}
+
+\subsection{Testbed}
+
+All services run in podman containers managed by systemd with \texttt{Restart=always}, so we use systemd-level service control for fault injection rather than podman-level commands.
+
+\subsection{Fault Taxonomy}
+
+Table~\ref{tab:taxonomy} shows 64 planned and completed incidents across five phases ordered by increasing blast radius and risk. Phase~1 covers safe single-service stops of API, backend, compute, network, and monitoring components (40 incidents). Phase~2 targets Ceph storage daemons---OSDs, monitors, and managers (5 incidents). Phase~3 injects critical infrastructure failures including RabbitMQ, MySQL, Redis, and Pacemaker bundles (5 incidents). Phase~4 introduces VM-creation workloads (\texttt{openstack server create}) during compute-node failures to generate richer log patterns (6 incidents). Phase~5 diversifies beyond service stop with three extended fault injection methods: port block, process kill, and configuration corruption (8 incidents). 46 unique fault scenarios are distributed across 37 distinct OpenStack services.
+
+\begin{table}[ht]
+\centering
+\scriptsize
+\caption{Incident Taxonomy}
+\label{tab:taxonomy}
+\begin{tabular}{@{}lp{3.2cm}cc@{}}
+\toprule
+\textbf{Phase} & \textbf{Description} & \textbf{Planned} & \textbf{Completed} \\
+\midrule
+1 -- Single-Svc & API, backend, compute, net stop & 40 & 40 \\
+2 -- Storage & Ceph OSD, mon, mgr failures & 5 & 5 \\
+3 -- Critical Infra & RabbitMQ, MySQL, Redis, haproxy & 5 & 5 \\
+4 -- Write Workload & Compute faults + VM creation & 6 & 6 \\
+5 -- Extended Types & Port block, kill-9, config corruption & 8 & 8 \\
+\midrule
+\textbf{Total} & & \textbf{64} & \textbf{64} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Services Covered by Incidents}
+\label{tab:services}
+\begin{tabular}{@{}lcp{4cm}@{}}
+\toprule
+\textbf{Category} & \textbf{Count} & \textbf{Services} \\
+\midrule
+Compute & 6 & nova-api, nova-compute, nova-conductor, nova-metadata, nova-scheduler, nova-vnc-proxy \\
+Network & 7 & neutron-api, neutron-dhcp, ovn-controller, ovn-metadata-agent, ovn-north-db, ovn-northd, ovn-south-db \\
+API/Orch. & 7 & glance-api, glance-api-internal, heat-api, heat-api-cfn, heat-engine, keystone, placement-api \\
+Storage & 8 & ceph-mgr, ceph-mon, ceph-osd-0, ceph-osd-1, ceph-osd-2, cinder-api, cinder-scheduler, cinder-volume \\
+DB/MQ & 3 & mysql, rabbitmq, redis \\
+Infra & 2 & haproxy, iscsid \\
+Monitoring & 2 & grafana, prometheus \\
+Dashboard & 2 & skyline-apiserver, skyline-console \\
+\midrule
+\textbf{Total} & \textbf{37} & \textbf{46 unique fault scenarios} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Pipeline and Fault Methods}
+
+Incidents are orchestrated through a nine-phase automated pipeline: pre-sanity health checks, watchdog timer deployment, workload induction, fault injection, fault sustain, automated recovery, post-sanity stabilization, Loki log export, and signature-based validation against expected error patterns. Health checks probe 40 metrics across SSH, OpenStack APIs, Ceph, and systemd services. Workload induction generates read-only API traffic or VM-creation. Fault injection applies a 60\,s default duration; post-sanity stabilization waits 30\,s. Logs are exported as gzipped JSON with a $\pm$2\,min window. Signature-based validation matches expected error patterns (e.g., HTTP 503 for API unavailability).
+
+\subsection{Ground Truth and Validation}
+
+\textbf{Ground truth} in OpenStack-RCA-Bench is defined by \textit{injection metadata}: the target service name, host IP, and precise timestamps of fault injection and recovery, recorded programmatically by the orchestrator in \texttt{metadata.json}. This constitutes the absolute reference for evaluating any RCA method.
+
+To ensure data quality, we apply two \textit{validation gates} independent of ground truth: (1)~\textbf{Sanity checks}---40 health probes before and after each incident; any failure invalidates the run. (2)~\textbf{Log manifestation check}---a conservative rule-based scan for expected keywords (service name, ``stop'', ``503'', ``ERROR'') confirms that the injected fault left observable traces in Loki. Crucially, this check is \textit{not} part of ground truth; it filters out incidents where logging failures prevented error propagation. This separation ensures that RCA evaluation is not circular: methods are scored against injection metadata, not the rules used for data curation.
+
+\section{Lessons Learned}
+\label{sec:challenges}
+
+Key challenges and their implications for RCA research: (1)~\textbf{Infrastructure Semantics}---Systemd's Restart=always defeats podman-level injection; systemd-level service control is required, and RCA methods must account for orchestration-layer recovery. (2)~\textbf{Observability Gaps}---Ceph logs through dedicated channels, not systemd journal, weakening signal propagation for storage incidents. (3)~\textbf{Fault Injection Fidelity}---forced process termination (SIGKILL) triggers sub-second recovery; multi-cycle injection with unique labels is necessary. Pacemaker bundles require retry loops instead of fixed sleeps. Config recovery demands full restart (Nova and Cinder cache config, ignoring SIGHUP).
+
+\section{Experimental Results}
+\label{sec:experiments}
+
+All 64 planned incidents were completed and validated. The manifestation of faults in Loki logs varies significantly across service categories, revealing distinct observability patterns that directly impact RCA difficulty.
+
+\textbf{Deterministic API and Network Failures.} Controller API/back\-end and OVN network incidents yield the strongest signals. A service stop produces immediate 503 errors in haproxy and consistent \{service, stop, down\} keywords in systemd journals, resulting in perfect or near-perfect detection (89--100\% F1). The sole exception is cinder-api (33\% match), where 503 errors do not consistently surface under read-only workloads.
+
+\textbf{Workload-Dependent Compute Signals.} Compute incidents exhibit a strict dependency on traffic type. Under read-only API workloads (9 incidents), log signals are sparse (72\% match), limited to only ``nova-compute'' and ``down'' in the node journal. Introducing VM-creation workloads (2 incidents) triggers voluminous scheduling and networking errors, raising the match rate to 100\%.
+
+\textbf{Observability Gaps in Storage and Orchestration.} Infrastructure services present the weakest log signals. Storage incidents average 70\% match; Cephadm-managed daemons bypass the systemd journal, consistently logging ``ceph'' and ``down'' but rarely ``ERROR''. Similarly, Pacemaker bundles (75\% average) produce variable messages; while HaProxy generates immediate 503 cascades (100\%), MySQL stops yield fewer ``Can't connect'' logs due to connection pooling.
+
+\textbf{Extended Fault Types (Phase~5).} Methods beyond service stop produce lower match rates (77--86\% F1) due to the absence of deterministic ``stop/down'' journal entries. Port blocking generates only connection timeouts, process kill triggers mixed crash/restart patterns, and config corruption produces parsing errors on restart.
+
+Table~\ref{tab:baseline} quantifies these observations via a rule-based oracle that scans logs for expected signatures per scenario. Because keyword matching is conservative (exact matches only), precision is 100\% across all categories. Overall F1 is 92\%, with perfect scores on controller-backend. Compute recall is 78\% and Storage is 70\%, reflecting the observability gaps and workload dependencies described above. This heuristic serves as an upper bound: it exploits known exact-match signatures, which is infeasible in production where failure signatures are unknown a priori.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Rule-Based Baseline}
+\label{tab:baseline}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Category} & \textbf{\#} & \textbf{Prec} & \textbf{Rec} & \textbf{F1} \\
+\midrule
+Ctrl-backend & 17 & 100\% & 100\% & 100\% \\
+OVN-network & 11 & 100\% &  91\% &  95\% \\
+Ctrl-API      &  8 & 100\% &  89\% &  94\% \\
+Pacemaker     &  4 & 100\% &  75\% &  86\% \\
+Compute       & 11 & 100\% &  78\% &  88\% \\
+Storage       &  5 & 100\% &  70\% &  82\% \\
+Extended (Ph.\,5) & 8 & 100\% & 72\% & 84\% \\
+\midrule
+\textbf{Overall} & \textbf{64} & \textbf{100\%} & \textbf{86\%} & \textbf{92\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\footnotetext{The signature-scan baseline is reproduced via \texttt{evaluate\_table3.py} using per-incident \texttt{validation.signatures\_expected} from metadata.json. Category-level recall varies by $\pm$10\% due to manual taxonomy refinement during dataset construction.}
+
+\subsection{LLM Baselines}
+\label{sec:llm}
+
+To assess the benchmark's difficulty for modern RCA approaches, we evaluate state-of-the-art LLMs using zero-shot prompting with hybrid log reduction (ERROR lines plus a 120-second window, capped at 60K characters). Zero-shot Top-1 accuracy reaches 10.9\% (7/64) for DeepSeek and 15.6\% (10/64) for Qwen. We additionally evaluate a three-agent neuro-symbolic pipeline combining anomaly detection, topological reasoning, and temporal analysis. Without access to the ground-truth injection service (a data-leakage issue identified during review and corrected), the multi-agent pipeline collapses to 1.6\% (1/64) for Qwen and 3.1\% (2/64) for DeepSeek---worse than zero-shot. This confirms that the previously reported 78.1\% accuracy was entirely driven by the temporal agent reading the injection target from its input prompt; without this leak, all three agents (anomaly, topology, temporal) fail to detect root causes from sparse log signals alone. The pipeline correctly identifies only trivial cases where the failing service (RabbitMQ) is also the injected service, and produces false positives on side-effect services with spurious error deltas. Full prompts, agent traces, and the corrected evaluation results are in the artifact.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Zero-Shot LLM Baseline Performance}
+\label{tab:llm}
+\begin{tabular}{@{}lp{2.5cm}cc@{}}
+\toprule
+\textbf{Approach} & \textbf{Model} & \textbf{\#Inc.} & \textbf{Top-1} \\
+\midrule
+Zero-shot & Qwen3-Coder-30B-A3B & 64 & 15.6\% \\
+Zero-shot & DeepSeek-V4-Flash & 64 & 10.9\% \\
+Multi-agent$^\dagger$ & Qwen3-Coder-30B-A3B & 64 & 1.6\% \\
+Multi-agent$^\dagger$ & DeepSeek-V4-Flash & 64 & 3.1\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+$\dagger$Multi-agent results after correcting data leakage (temporal agent no longer receives ground-truth injection service). See artifact for full details.
+
+
+
+
+\section{Limitations and Future Work}
+\label{sec:limitations}
+
+The benchmark is collected on one TripleO Wallaby cluster; service names and container mappings may differ across OpenStack releases and distributions, affecting external validity. We document all service mappings to facilitate adaptation to modern deployment frameworks (e.g., Kolla-Ansible). While 64 incidents constitute a small training set, they form a sufficiently dense evaluation benchmark for zero-shot and few-shot RCA methods. Duplicate scenarios (e.g., multiple nova-compute-stop variations across hosts and workload modes) intentionally capture run-to-run variance in log verbosity and downstream error propagation.
+
+Although our testbed runs Prometheus, we deliberately exclude time-series metrics and distributed traces from the current release. Metrics are effective for anomaly detection but provide weak signals for fine-grained RCA in IaaS, where multiple services exhibit correlated spikes during cascades. Furthermore, in OpenStack's AMQP-based architecture, trace context breaks at RPC boundaries and does not cover infrastructure daemons (Ceph, Pacemaker) or silent network partitions (port block). We intentionally isolate the log-based RCA problem to evaluate pure causal reasoning, leaving multi-modal fusion for future work.
+
+Future work will expand along several directions: true cascade failures with correlated multi-service faults; network partitions simulating split-brain scenarios; resource exhaustion (OOM, disk-full); multi-node storage failures; combined fault types testing disentanglement of multiple root causes; and live-migration workloads during compute-node failures.
+
+\section{Conclusion}
+\label{sec:conclusion}
+We presented OpenStack-RCA-Bench, a reproducible benchmark for evaluating RCA methods in IaaS environments. Its 9-phase pipeline combines four fault injection methods, Loki-based log collection, and programmatic ground truth to produce 64 validated incidents spanning 37 services across 46 fault scenarios. A rule-based baseline achieves 92\% overall F1 with detailed per-category breakdowns and perfect scores on controller-backend. The framework supports adding new fault types and scenarios, and the documented lessons learned provide practical guidance for fault injection in IaaS.
+
+\section{Data Availability}
+\label{sec:data}
+
+The benchmark, fault injection framework, and evaluation code are publicly available at \url{https://github.com/IgorBMSTU/openstack-rca-bench} (DOI: \href{https://doi.org/10.5281/zenodo.20132156}{10.5281/zenodo.20132156}). The artifact ships as a Docker Compose setup. Running \texttt{docker compose up} builds the environment and validates dataset integrity. Full LLM evaluation requires provider API keys via environment variables (see README).
+
+\bibliographystyle{ACM-Reference-Format}
+\begin{thebibliography}{99}
+
+\bibitem{chaoseater}
+Kikuta, D., et al.
+ChaosEater: Automated Preliminary Analysis of Software Failure via Chaos Engineering and LLM.
+In \textit{ASE 2025 NIER}.
+
+\bibitem{aiopslab}
+Garriga, J., et al.
+AIOpsLab: A Holistic Framework to Evaluate AI Agents for IT Operations.
+arXiv:2501.06706, 2024.
+
+\bibitem{loghub}
+He, S., et al.
+Loghub: A Large Collection of System Log Datasets for AI-driven Log Analytics.
+In \textit{ICSE 2019}.
+
+\bibitem{cloudrca}
+Zhang, W., et al.
+CloudRCA: A Root Cause Analysis Framework for Cloud Computing Platforms.
+In \textit{ICSE 2022}.
+
+\bibitem{lemmarca}
+Chen, Y., et al.
+LEMMA-RCA: Log-Enhanced Multi-Modal Association for Root Cause Analysis.
+arXiv:2406.05375, 2024.
+
+\bibitem{rcaeval}
+Pham, H., et al.
+RCAEval: A Benchmark for Evaluating Root Cause Analysis Techniques.
+In \textit{WWW 2025}.
+
+\bibitem{eadro}
+Zhang, H., et al.
+Eadro: An End-to-End Anomaly Detection and Root Cause Localization System for Cloud-Native Applications.
+In \textit{FSE 2024}.
+
+\bibitem{nezha}
+Zhang, H., et al.
+Nezha: Interpretable Fine-Grained Root Causes Analysis for Cloud-Native Systems.
+In \textit{FSE 2023}.
+
+\bibitem{cloudopsbench}
+Liu, Y., et al.
+Cloud-OpsBench: A Benchmark for Cloud Operations with Failure Injection and Evaluation.
+arXiv:2603.00468, 2025.
+
+\bibitem{cotroneo}
+Cotroneo, D., et al.
+How Do Bugs Surface? A Comprehensive Study on Bug Manifestations in OpenStack.
+In \textit{ESEC/FSE 2019}.
+
+\bibitem{nedelkoski}
+Nedelkoski, S., et al.
+Multi-source Distributed System Data for AI-powered Analytics.
+In \textit{ESOCC 2020}.
+
+\bibitem{kalaki}
+Kalaki, P.~S., et al.
+Anomaly Detection on OpenStack Logs Based on an Improved Robust Principal Component Analysis Model and Its Projection onto Column Space.
+In \textit{Software: Practice and Experience}, 2023.
+
+\bibitem{rajkarnikar}
+Rajkarnikar, J., et al.
+Unsupervised Anomaly Detection in OpenStack Logs via Fine-Tuned RoBERTa Embeddings.
+In \textit{Journal of Cybersecurity, Digital Forensics}, 2025.
+
+\end{thebibliography}
+
+\end{document}

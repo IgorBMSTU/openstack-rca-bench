@@ -1,2 +1,0 @@
-Zero-shot deepseek-v4-flash
-Total: 64, Correct: 0, Accuracy: 0.00%
